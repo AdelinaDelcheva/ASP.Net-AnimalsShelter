@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "AnimalsShelterSystem.Common/1.0.0": {
+        "runtime": {
+          "AnimalsShelterSystem.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AnimalsShelterSystem.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

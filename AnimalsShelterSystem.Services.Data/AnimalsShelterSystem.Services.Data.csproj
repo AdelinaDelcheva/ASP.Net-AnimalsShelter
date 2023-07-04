@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AnimalsShelter.Common\AnimalsShelterSystem.Common.csproj" />
+    <ProjectReference Include="..\AnimalsShelter.Data.Models\AnimalsShelterSystem.Data.Models.csproj" />
+    <ProjectReference Include="..\AnimalsShelter.Data\AnimalsShelterSystem.Data.csproj" />
+    <ProjectReference Include="..\AnimalsShelterSystem.Web.ViewModels\AnimalsShelterSystem.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>
