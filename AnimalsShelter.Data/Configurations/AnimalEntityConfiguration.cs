@@ -12,6 +12,9 @@
             
             builder.Property(a=>a.CreatedOn).HasDefaultValueSql("GETDATE()");
 
+            builder.Property(a => a.IsDeleted)
+                .HasDefaultValue(false);
+
             builder.HasOne(a=>a.AnimalCareVolunteer)
                    .WithMany(v=>v.AnimalsCare)
                    .HasForeignKey(a=>a.AnimalCareVolunteerId)

@@ -4,6 +4,7 @@ using AnimalsShelterSystem.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimalsShelterSystem.Data.Migrations
 {
     [DbContext(typeof(AnimalsShelterDbContext))]
-    partial class AnimalsShelterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230705133811_IsActiveColumnForSoftDeleting")]
+    partial class IsActiveColumnForSoftDeleting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,10 +52,8 @@ namespace AnimalsShelterSystem.Data.Migrations
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -73,25 +73,25 @@ namespace AnimalsShelterSystem.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8f825a9c-4628-49d1-a3fd-ed5b9e3c0b9b"),
+                            Id = new Guid("46dd5968-e410-4d6c-bcde-a22bd82adc8a"),
                             Age = 2,
                             AnimalAdopterId = new Guid("a9bb84c2-3c92-4463-8d8b-fe7712553255"),
                             AnimalCareVolunteerId = new Guid("9c92331f-7bad-456f-871d-088b8b0df5fb"),
                             BreedId = 1,
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://www.k9rl.com/wp-content/uploads/2015/12/Black-Pomeranian.jpg",
-                            IsDeleted = false,
+                            IsActive = false,
                             Name = "Medovina"
                         },
                         new
                         {
-                            Id = new Guid("5c4b86e9-57eb-4d3b-8108-89c7ae7b5f1a"),
+                            Id = new Guid("068030d2-1cfc-4d4b-a5d4-bea6c4174b8f"),
                             Age = 4,
                             AnimalCareVolunteerId = new Guid("9c92331f-7bad-456f-871d-088b8b0df5fb"),
                             BreedId = 2,
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Persialainen.jpg/330px-Persialainen.jpg",
-                            IsDeleted = false,
+                            IsActive = false,
                             Name = "Suzi"
                         });
                 });

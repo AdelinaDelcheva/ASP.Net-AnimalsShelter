@@ -36,7 +36,7 @@ namespace AnimalsShelterSystem.Data.Models
         public string ImageUrl { get; set; } = null!;
 
       
-
+        public bool IsDeleted { get; set; }
       
         public Guid? AnimalAdopterId { get; set; }
         public virtual ApplicationUser? AnimalAdopter { get; set; }

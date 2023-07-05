@@ -4,6 +4,7 @@ using AnimalsShelterSystem.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimalsShelterSystem.Data.Migrations
 {
     [DbContext(typeof(AnimalsShelterDbContext))]
-    partial class AnimalsShelterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230705135150_NewColumnForSoftDeletingAnimal")]
+    partial class NewColumnForSoftDeletingAnimal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,7 +55,7 @@ namespace AnimalsShelterSystem.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -73,7 +75,7 @@ namespace AnimalsShelterSystem.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8f825a9c-4628-49d1-a3fd-ed5b9e3c0b9b"),
+                            Id = new Guid("5d87e089-3bb5-4f52-8aef-d42f5534b4c5"),
                             Age = 2,
                             AnimalAdopterId = new Guid("a9bb84c2-3c92-4463-8d8b-fe7712553255"),
                             AnimalCareVolunteerId = new Guid("9c92331f-7bad-456f-871d-088b8b0df5fb"),
@@ -85,7 +87,7 @@ namespace AnimalsShelterSystem.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5c4b86e9-57eb-4d3b-8108-89c7ae7b5f1a"),
+                            Id = new Guid("16973de7-3e12-41d2-94fa-23b3fd120293"),
                             Age = 4,
                             AnimalCareVolunteerId = new Guid("9c92331f-7bad-456f-871d-088b8b0df5fb"),
                             BreedId = 2,
