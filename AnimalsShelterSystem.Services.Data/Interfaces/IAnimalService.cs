@@ -14,5 +14,8 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
         Task<string> CreateAndReturnIdAsync(AnimalFormModel model, string volunteerId);
 
         Task<AllAnimalFilteredAndPagedServiceModel> AllAsync(AllAnimalsQueryModel model);
+        Task<IEnumerable<AnimalAllViewModel>> AllByVolunteerIdAsync(string volunteerId);
+
+        Task<IEnumerable<AnimalAllViewModel>> AllByUserIdAsync(string userId);
     }
 }

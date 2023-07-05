@@ -2,7 +2,7 @@
 
 <div class="col-md-4">
     <div class="card mb-3">
-        <img class="card-img-top" src="@Model.ImageUrl" alt="Animal Image">
+        <img class="card-img-top" style="height: 400px; width: 100%" src="@Model.ImageUrl" alt="Animal Image">
         <div class="card-body text-center">
             <h4>@Model.Name</h4>
             <h6>Breed: <b>@Model.Breed</b></h6>
@@ -22,10 +22,17 @@
 
                 @if (!Model.IsAdopted)
                 {
-                            <form class="input-group-sm" asp-controller="Animal"
+                            <form  asp-controller="Animal"
                   asp-action="Adopt" asp-route-id="@Model.Id" method="post">
                                 <input class="btn btn-primary" type="submit" value="Adopt" />
                             </form>
+                }
+                else
+                {
+                    <form asp-controller="Animal" asp-action="Review"
+                         asp-route-id="@Model.Id" method="post">
+                          <input class="btn btn-primary" type="submit" value="Review" />
+                    </form>
                 }
                 
             }

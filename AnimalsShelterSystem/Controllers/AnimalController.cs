@@ -102,5 +102,44 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Mine()
+        {
+            List<AnimalAllViewModel> myAnimals =
+                new List<AnimalAllViewModel>();
+
+            string userId = this.User.GetId()!;
+            bool isUserVolunteer = await this.volunteerService
+                .VolunteerExistsByUserIdAsync(userId);
+
+            try
+            {
+                if (isUserVolunteer)
+                {
+                    string? volunteerId =
+                        await this.volunteerService.GetVolunteerIdByUserIdAsync(userId);
+
+                    myAnimals.AddRange(await this.animalService.AllByVolunteerIdAsync(volunteerId!));
+                }
+                else
+                {
+                    myAnimals.AddRange(await this.animalService.AllByUserIdAsync(userId));
+                }
+
+                return this.View(myAnimals);
+            }
+            catch (Exception)
+            {
+                return this.GeneralError();
+            }
+        }
+
+        private IActionResult GeneralError()
+        {
+            this.TempData[ErrorMessage] =
+                "Unexpected error occurred! Please try again later or contact administrator";
+
+            return this.RedirectToAction("Index", "Home");
+        }
     }
 }

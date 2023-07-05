@@ -56,7 +56,7 @@ namespace AnimalsShelterSystem.Services.Data
             };
 
             IEnumerable<AnimalAllViewModel> allAnimals = await animalsQuery
-                
+                .Where(a=>a.IsDeleted==false)
                 .Skip((model.CurrentPage - 1) * model.AnimalsPerPage)
                 .Take(model.AnimalsPerPage)
                 .Select(a => new AnimalAllViewModel()
@@ -76,6 +76,44 @@ namespace AnimalsShelterSystem.Services.Data
                 TotalAnimalsCount = totalAnimals,
                 Animals = allAnimals
             };
+        }
+
+        public async Task<IEnumerable<AnimalAllViewModel>> AllByUserIdAsync(string userId)
+        {
+            var result = await this.dbContext
+                                 .Animals
+                                 .Where(a => a.AnimalAdopterId.HasValue && a.AnimalAdopterId.ToString() == userId)
+                                 .Select(a => new AnimalAllViewModel()
+                                 {
+                                     Id = a.Id.ToString(),
+                                     Name = a.Name,
+                                     Breed = a.Breed.Breed,
+                                     ImageUrl = a.ImageUrl,
+
+                                     IsAdopted = a.AnimalAdopterId.HasValue
+                                 })
+                                 .ToListAsync();
+
+            return result;
+        }
+
+        public async Task<IEnumerable<AnimalAllViewModel>> AllByVolunteerIdAsync(string volunteerId)
+        {
+            var result = await this.dbContext
+                              .Animals
+                              .Where(a => a.AnimalCareVolunteerId.ToString() == volunteerId)
+                              .Select(a => new AnimalAllViewModel()
+                              {
+                                  Id = a.Id.ToString(),
+                                  Name = a.Name,
+                                  Breed = a.Breed.Breed,
+                                  ImageUrl = a.ImageUrl,
+
+                                  IsAdopted = a.AnimalAdopterId.HasValue
+                              })
+                              .ToListAsync();
+
+            return result;
         }
 
         public async Task<string> CreateAndReturnIdAsync(AnimalFormModel model, string volunteerId)
@@ -98,6 +136,7 @@ namespace AnimalsShelterSystem.Services.Data
         public async Task<IEnumerable<IndexViewModel>> LastThreeAnimals()
         {
             var result = await dbContext.Animals
+                 .Where(a=>a.IsDeleted==false)
                  .OrderByDescending(a => a.CreatedOn)
                  .Take(3)
                  .Select(a => new IndexViewModel()
