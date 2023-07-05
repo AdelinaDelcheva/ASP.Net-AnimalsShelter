@@ -16,6 +16,15 @@ namespace AnimalsShelterSystem.Services.Data
         {
             this.dbContext = dbContext;
         }
+
+        public async Task<IEnumerable<string>> AllBreedNamesAsync()
+        {
+            return await this.dbContext
+                .Breeds
+                .Select(b=>b.Breed)
+                .ToArrayAsync();
+        }
+
         public async Task<IEnumerable<AnimalBreedFormModel>> AllBreedsAsync()
         {
             IEnumerable<AnimalBreedFormModel> allBreeds = await this.dbContext

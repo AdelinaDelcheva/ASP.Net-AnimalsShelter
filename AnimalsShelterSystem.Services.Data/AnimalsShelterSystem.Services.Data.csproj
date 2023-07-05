@@ -10,6 +10,7 @@
     <ProjectReference Include="..\AnimalsShelter.Common\AnimalsShelterSystem.Common.csproj" />
     <ProjectReference Include="..\AnimalsShelter.Data.Models\AnimalsShelterSystem.Data.Models.csproj" />
     <ProjectReference Include="..\AnimalsShelter.Data\AnimalsShelterSystem.Data.csproj" />
+    <ProjectReference Include="..\AnimalsShelterSystem.Services.Data.Models\AnimalsShelterSystem.Services.Data.Models.csproj" />
     <ProjectReference Include="..\AnimalsShelterSystem.Web.ViewModels\AnimalsShelterSystem.Web.ViewModels.csproj" />
   </ItemGroup>
 

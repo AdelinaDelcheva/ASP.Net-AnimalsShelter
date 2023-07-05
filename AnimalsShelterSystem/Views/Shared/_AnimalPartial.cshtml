@@ -1,0 +1,34 @@
+﻿@model AnimalAllViewModel
+
+<div class="col-md-4">
+    <div class="card mb-3">
+        <img class="card-img-top" src="@Model.ImageUrl" alt="Animal Image">
+        <div class="card-body text-center">
+            <h4>@Model.Name</h4>
+            <h6>Breed: <b>@Model.Breed</b></h6>
+            
+            <h6>(@(Model.IsAdopted ? "Adopted" : "Not Adopted"))</h6>
+            <br />
+            <a asp-controller="Animal" asp-action="Details" asp-route-id="@Model.Id"
+               class="btn btn-success">Details</a>
+
+            @if (this.User.Identity?.IsAuthenticated ?? false)
+            {
+                    <a asp-controller="Animal" asp-action="Edit" asp-route-id="@Model.Id"
+               class="btn btn-warning">Edit</a>
+                <a asp-controller="Animal" asp-action="Delete" asp-route-id="@Model.Id"
+               class="btn btn-danger">Delete</a>
+                <p></p>
+
+                @if (!Model.IsAdopted)
+                {
+                            <form class="input-group-sm" asp-controller="Animal"
+                  asp-action="Adopt" asp-route-id="@Model.Id" method="post">
+                                <input class="btn btn-primary" type="submit" value="Adopt" />
+                            </form>
+                }
+                
+            }
+        </div>
+    </div>
+</div>

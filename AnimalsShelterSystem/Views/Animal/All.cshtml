@@ -1,0 +1,109 @@
+﻿@model AllAnimalsQueryModel
+
+@{
+    ViewBag.Title = "All Animals";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<form method="get">
+    <div class="row" style="align-items:center;justify-content:space-between">
+        <div class="form-group col-md-3 d-flex justify-content-between">
+            <div class="form-group">
+                <label asp-for="Breed"></label>
+                <select asp-for="Breed" class="form-control">
+                    <option value="">All</option>
+                    @foreach (var breed in Model.Breeds)
+                    {
+                        <option value="@breed">@breed</option>
+                    }
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="AnimalsPerPage"></label>
+                <select asp-for="AnimalsPerPage" class="form-control">
+                    <option value="3">3</option>
+                    <option value="6">6</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="SearchString"></label>
+            <input asp-for="SearchString" class="form-control" placeholder="...">
+        </div>
+
+        <div class="form-group col-md-3">
+            <div class="form-group">
+                <label asp-for="AnimalSorting"></label>
+                <select asp-for="AnimalSorting" class="form-control">
+                    <option value="0">Newest</option>
+                    <option value="1">Oldest</option>
+               
+                    <option value="2">Not adopted first</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-3" style="width:100px">
+            <div class="form-group mt-4 p-2">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@{
+    int previousPage = Model.CurrentPage - 1;
+    if (previousPage < 1)
+    {
+        previousPage = 1;
+    }
+
+    int maxPage = (int)Math.Ceiling((double)Model.TotalAnimals /
+        Model.AnimalsPerPage);
+}
+
+<div class="row mb-5">
+    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+           asp-controller="Animal"
+           asp-action="All"
+           asp-route-currentPage="@previousPage"
+           asp-route-breed="@Model.Breed"
+           asp-route-searchTerm="@Model.SearchString"
+           asp-route-sorting="@((int)Model.AnimalSorting)"><<</a>
+    </div>
+
+    @{
+        bool shouldNextPageBeDisabled = Model.CurrentPage == maxPage ||
+            !Model.Animals.Any();
+    }
+
+    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary 
+           @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
+           asp-controller="Animal"
+           asp-action="All"
+           asp-route-currentPage="@(Model.CurrentPage + 1)"
+           asp-route-breed="@Model.Breed"
+           asp-route-searchTerm="@Model.SearchString"
+           asp-route-sorting="@((int)Model.AnimalSorting)">>></a>
+    </div>
+</div>
+
+@if (!Model.Animals.Any())
+{
+    <h2 class="text-center">No Animals found by the given criteria!</h2>
+}
+
+<div class="row" style="justify-content:flex-start;align-items:flex-start">
+    @foreach (var animal in Model.Animals)
+    {
+        <partial name="_AnimalPartial" model="@animal" />
+    }
+</div>

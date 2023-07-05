@@ -3477,6 +3477,7 @@
           "AnimalsShelterSystem.Common": "1.0.0",
           "AnimalsShelterSystem.Data": "1.0.0",
           "AnimalsShelterSystem.Data.Models": "1.0.0",
+          "AnimalsShelterSystem.Services.Data.Models": "1.0.0",
           "AnimalsShelterSystem.Web.ViewModels": "1.0.0"
         },
         "compile": {
@@ -3484,6 +3485,19 @@
         },
         "runtime": {
           "bin/placeholder/AnimalsShelterSystem.Services.Data.dll": {}
+        }
+      },
+      "AnimalsShelterSystem.Services.Data.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AnimalsShelterSystem.Web.ViewModels": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AnimalsShelterSystem.Services.Data.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AnimalsShelterSystem.Services.Data.Models.dll": {}
         }
       },
       "AnimalsShelterSystem.Web.Infrastructure/1.0.0": {
@@ -9610,6 +9624,11 @@
       "path": "../AnimalsShelterSystem.Services.Data/AnimalsShelterSystem.Services.Data.csproj",
       "msbuildProject": "../AnimalsShelterSystem.Services.Data/AnimalsShelterSystem.Services.Data.csproj"
     },
+    "AnimalsShelterSystem.Services.Data.Models/1.0.0": {
+      "type": "project",
+      "path": "../AnimalsShelterSystem.Services.Data.Models/AnimalsShelterSystem.Services.Data.Models.csproj",
+      "msbuildProject": "../AnimalsShelterSystem.Services.Data.Models/AnimalsShelterSystem.Services.Data.Models.csproj"
+    },
     "AnimalsShelterSystem.Web.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../AnimalsShelterSystem.Web.Infrastructure/AnimalsShelterSystem.Web.Infrastructure.csproj",
@@ -9627,6 +9646,7 @@
       "AnimalsShelterSystem.Data >= 1.0.0",
       "AnimalsShelterSystem.Data.Models >= 1.0.0",
       "AnimalsShelterSystem.Services.Data >= 1.0.0",
+      "AnimalsShelterSystem.Services.Data.Models >= 1.0.0",
       "AnimalsShelterSystem.Web.Infrastructure >= 1.0.0",
       "AnimalsShelterSystem.Web.ViewModels >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 6.0.11",
@@ -9671,6 +9691,9 @@
             },
             "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data\\AnimalsShelterSystem.Data.csproj": {
               "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data\\AnimalsShelterSystem.Data.csproj"
+            },
+            "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data.Models\\AnimalsShelterSystem.Services.Data.Models.csproj": {
+              "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data.Models\\AnimalsShelterSystem.Services.Data.Models.csproj"
             },
             "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data\\AnimalsShelterSystem.Services.Data.csproj": {
               "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data\\AnimalsShelterSystem.Services.Data.csproj"

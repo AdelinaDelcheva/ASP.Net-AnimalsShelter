@@ -186,3 +186,5 @@ C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\D
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\AnimalsShelterSystem.Services.Data.Models.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\AnimalsShelterSystem.Services.Data.Models.pdb

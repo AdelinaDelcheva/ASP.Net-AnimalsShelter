@@ -7,5 +7,7 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
         Task<IEnumerable<AnimalBreedFormModel>> AllBreedsAsync();
 
         Task<bool> ExistsByIdAsync(int id);
+
+        Task<IEnumerable<string>> AllBreedNamesAsync();
     }
 }

@@ -2060,10 +2060,19 @@
           "AnimalsShelterSystem.Common": "1.0.0",
           "AnimalsShelterSystem.Data": "1.0.0",
           "AnimalsShelterSystem.Data.Models": "1.0.0",
+          "AnimalsShelterSystem.Services.Data.Models": "1.0.0",
           "AnimalsShelterSystem.Web.ViewModels": "1.0.0"
         },
         "runtime": {
           "AnimalsShelterSystem.Services.Data.dll": {}
+        }
+      },
+      "AnimalsShelterSystem.Services.Data.Models/1.0.0": {
+        "dependencies": {
+          "AnimalsShelterSystem.Web.ViewModels": "1.0.0"
+        },
+        "runtime": {
+          "AnimalsShelterSystem.Services.Data.Models.dll": {}
         }
       },
       "AnimalsShelterSystem.Web.ViewModels/1.0.0": {
@@ -3400,6 +3409,11 @@
       "sha512": ""
     },
     "AnimalsShelterSystem.Services.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AnimalsShelterSystem.Services.Data.Models/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

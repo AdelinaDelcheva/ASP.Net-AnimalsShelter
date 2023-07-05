@@ -8,7 +8,7 @@ namespace AnimalsShelterSystem.Web.Controllers
     using AnimalsShelterSystem.Services.Data.Interfaces;
     using AnimalsShelterSystem.Web.Infrastructure.Extensitions;
     using AnimalsShelterSystem.Web.ViewModels.Animal;
-
+    using AnimalsShelterSystem.Services.Data.Models.Animal;
 
     [Authorize]
     public class AnimalController : Controller
@@ -27,9 +27,14 @@ namespace AnimalsShelterSystem.Web.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery]AllAnimalsQueryModel model)
         {
-            return View();
+            AllAnimalFilteredAndPagedServiceModel serviceModel=
+                 await this.animalService.AllAsync(model);
+            model.Animals = serviceModel.Animals;
+            model.TotalAnimals = serviceModel.TotalAnimalsCount;
+            model.Breeds = await this.animalBreedService.AllBreedNamesAsync();
+            return View(model);
         }
         [HttpGet]
         public async Task<IActionResult> Add()
@@ -82,11 +87,11 @@ namespace AnimalsShelterSystem.Web.Controllers
                 string? volunteerId =
                     await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
 
-                string houseId =
+                string animalId =
                     await this.animalService.CreateAndReturnIdAsync(model, volunteerId!);
 
                 this.TempData[SuccessMessage] = "Animal was added successfully!";
-                return this.RedirectToAction("Details", "Animal", new { id = houseId });
+                return this.RedirectToAction("Details", "Animal", new { id = animalId });
             }
             catch (Exception)
             {

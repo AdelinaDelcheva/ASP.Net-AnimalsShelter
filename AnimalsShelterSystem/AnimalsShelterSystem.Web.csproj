@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -19,6 +19,7 @@
     <ProjectReference Include="..\AnimalsShelter.Common\AnimalsShelterSystem.Common.csproj" />
     <ProjectReference Include="..\AnimalsShelter.Data.Models\AnimalsShelterSystem.Data.Models.csproj" />
     <ProjectReference Include="..\AnimalsShelter.Data\AnimalsShelterSystem.Data.csproj" />
+    <ProjectReference Include="..\AnimalsShelterSystem.Services.Data.Models\AnimalsShelterSystem.Services.Data.Models.csproj" />
     <ProjectReference Include="..\AnimalsShelterSystem.Services.Data\AnimalsShelterSystem.Services.Data.csproj" />
     <ProjectReference Include="..\AnimalsShelterSystem.Web.Infrastructure\AnimalsShelterSystem.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\AnimalsShelterSystem.Web.ViewModels\AnimalsShelterSystem.Web.ViewModels.csproj" />

@@ -33,3 +33,5 @@ C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.I
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\bin\Debug\net6.0\AnimalsShelterSystem.Data.Models.pdb
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\bin\Debug\net6.0\AnimalsShelterSystem.Web.ViewModels.pdb
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.csproj.CopyComplete
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\bin\Debug\net6.0\AnimalsShelterSystem.Services.Data.Models.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\bin\Debug\net6.0\AnimalsShelterSystem.Services.Data.Models.pdb

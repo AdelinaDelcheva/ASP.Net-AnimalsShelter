@@ -1,0 +1,109 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "AnimalsShelterSystem.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/AnimalsShelterSystem.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AnimalsShelterSystem.Common.dll": {}
+        }
+      },
+      "AnimalsShelterSystem.Web.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AnimalsShelterSystem.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AnimalsShelterSystem.Web.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AnimalsShelterSystem.Web.ViewModels.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AnimalsShelterSystem.Common/1.0.0": {
+      "type": "project",
+      "path": "../AnimalsShelter.Common/AnimalsShelterSystem.Common.csproj",
+      "msbuildProject": "../AnimalsShelter.Common/AnimalsShelterSystem.Common.csproj"
+    },
+    "AnimalsShelterSystem.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../AnimalsShelterSystem.Web.ViewModels/AnimalsShelterSystem.Web.ViewModels.csproj",
+      "msbuildProject": "../AnimalsShelterSystem.Web.ViewModels/AnimalsShelterSystem.Web.ViewModels.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "AnimalsShelterSystem.Web.ViewModels >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\1\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data.Models\\AnimalsShelterSystem.Services.Data.Models.csproj",
+      "projectName": "AnimalsShelterSystem.Services.Data.Models",
+      "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data.Models\\AnimalsShelterSystem.Services.Data.Models.csproj",
+      "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data.Models\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Web.ViewModels\\AnimalsShelterSystem.Web.ViewModels.csproj": {
+              "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Web.ViewModels\\AnimalsShelterSystem.Web.ViewModels.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
