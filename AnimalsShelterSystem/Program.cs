@@ -8,6 +8,7 @@ namespace AnimalsShelterSystem.Web
     using AnimalsShelterSystem.Data.Models;
     using AnimalsShelterSystem.Services.Data.Interfaces;
     using AnimalsShelterSystem.Web.Infrastructure.Extensitions;
+    using AnimalsShelterSystem.Web.Infrastructure.ModelBinders;
 
     public class Program
     {
@@ -38,7 +39,12 @@ namespace AnimalsShelterSystem.Web
             builder.Services.AddAppService(typeof(IAnimalService));
 
 
-            builder.Services.AddControllersWithViews();
+            builder.Services
+                .AddControllersWithViews()
+                .AddMvcOptions(opt =>
+                {
+                    opt.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+                });
 
             var app = builder.Build();
 

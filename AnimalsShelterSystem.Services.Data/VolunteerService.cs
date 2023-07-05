@@ -51,5 +51,18 @@ namespace AnimalsShelterSystem.Services.Data
             await this.dbContext.Volunteers.AddAsync(newVolunteer);
             await this.dbContext.SaveChangesAsync();
         }
+
+        public async Task<string?> GetVolunteerIdByUserIdAsync(string userId)
+        {
+          Volunteer? volunteer= await dbContext
+                                        .Volunteers
+                                        .FirstOrDefaultAsync(v=>v.UserId.ToString()==userId);
+            if(volunteer==null)
+            {
+                return null;
+            }
+
+            return volunteer.Id.ToString();
+        }
     }
 }

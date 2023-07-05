@@ -176,3 +176,13 @@ C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\obj\D
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\obj\Debug\net6.0\AnimalsShelterSystem.Web.pdb
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\obj\Debug\net6.0\AnimalsShelterSystem.Web.genruntimeconfig.cache
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\obj\Debug\net6.0\ref\AnimalsShelterSystem.Web.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

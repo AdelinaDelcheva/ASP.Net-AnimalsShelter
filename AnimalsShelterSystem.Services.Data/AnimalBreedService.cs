@@ -30,5 +30,10 @@ namespace AnimalsShelterSystem.Services.Data
 
             return allBreeds;
         }
+
+        public async Task<bool> ExistsByIdAsync(int id)
+        {
+            return await dbContext.Breeds.AnyAsync(b => b.Id == id);
+        }
     }
 }

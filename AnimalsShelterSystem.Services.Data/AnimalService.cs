@@ -5,9 +5,10 @@ namespace AnimalsShelterSystem.Services.Data
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
+    using AnimalsShelterSystem.Data.Models;
     using AnimalsShelterSystem.Services.Data.Interfaces;
     using AnimalsShelterSystem.Web.Data;
+    using AnimalsShelterSystem.Web.ViewModels.Animal;
     using AnimalsShelterSystem.Web.ViewModels.Home;
     using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,23 @@ namespace AnimalsShelterSystem.Services.Data
         public AnimalService(AnimalsShelterDbContext dbContext)
         {
             this.dbContext = dbContext;
+        }
+
+        public async Task<string> CreateAndReturnIdAsync(AnimalFormModel model, string volunteerId)
+        {
+            Animal newAnimal = new Animal()
+            {
+                Name = model.Name,
+                Age = model.Age,
+                BreedId = model.BreedId,
+                ImageUrl = model.ImageUrl,
+                AnimalCareVolunteerId = Guid.Parse(volunteerId),
+                CreatedOn = DateTime.UtcNow
+            };
+            await this.dbContext.Animals.AddAsync(newAnimal);
+            await this.dbContext.SaveChangesAsync();
+
+            return newAnimal.Id.ToString();
         }
 
         public async Task<IEnumerable<IndexViewModel>> LastThreeAnimals()

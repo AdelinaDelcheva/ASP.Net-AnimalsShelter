@@ -15,10 +15,13 @@ namespace AnimalsShelterSystem.Web.Controllers
     {
         private readonly IAnimalBreedService animalBreedService;
         private readonly IVolunteerService volunteerService;
-        public AnimalController(IAnimalBreedService animalBreedService, IVolunteerService volunteerService)
+        private readonly IAnimalService animalService;
+        public AnimalController(IAnimalBreedService animalBreedService, IVolunteerService volunteerService,
+                                IAnimalService animalService)
         {
             this.animalBreedService = animalBreedService;
             this.volunteerService = volunteerService;
+            this.animalService = animalService;
         }
 
 
@@ -46,5 +49,53 @@ namespace AnimalsShelterSystem.Web.Controllers
             };
             return View(animalFormModel);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(AnimalFormModel model)
+        {
+            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+            if (!isVolunteer)
+            {
+
+                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
+                return this.RedirectToAction("Become", "Volunteer");
+            }
+
+
+            bool breedExists =
+                await this.animalBreedService.ExistsByIdAsync(model.BreedId);
+            if (!breedExists)
+            {
+                // Adding model error to ModelState automatically makes ModelState Invalid
+                this.ModelState.AddModelError(nameof(model.BreedId), "Selected breed does not exist!");
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                model.Breeds = await this.animalBreedService.AllBreedsAsync();
+
+                return this.View(model);
+            }
+
+            try
+            {
+                string? volunteerId =
+                    await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
+
+                string houseId =
+                    await this.animalService.CreateAndReturnIdAsync(model, volunteerId!);
+
+                this.TempData[SuccessMessage] = "Animal was added successfully!";
+                return this.RedirectToAction("Details", "Animal", new { id = houseId });
+            }
+            catch (Exception)
+            {
+                this.ModelState.AddModelError(string.Empty, "Unexpected error occurred while trying to add your new animal! Please try again later or contact administrator!");
+                model.Breeds = await this.animalBreedService.AllBreedsAsync();
+
+                return this.View(model);
+            }
+        }
+
     }
 }
