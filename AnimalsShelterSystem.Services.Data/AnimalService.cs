@@ -87,7 +87,7 @@ namespace AnimalsShelterSystem.Services.Data
                 BreedId = model.BreedId,
                 ImageUrl = model.ImageUrl,
                 AnimalCareVolunteerId = Guid.Parse(volunteerId),
-                CreatedOn = DateTime.UtcNow
+               
             };
             await this.dbContext.Animals.AddAsync(newAnimal);
             await this.dbContext.SaveChangesAsync();
