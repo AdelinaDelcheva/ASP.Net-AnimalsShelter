@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bsLJ5fy20uqNgiWyFimRw9qa9m1XJOJE7hTMeqFJHQhEyTalWBrQgfZS65B3mihE9n71DuTBzo++SiRzzI3VJQ==",
+  "dgSpecHash": "g5N/6mRaRcS07BqM7zQgJXbvZGlUgXNcuX8L2PxfhfReP/myLZHO+Iwfmf47jC8AwmpAMGCvfJP5dzwm69fQhA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\AnimalsShelterSystem.Web.csproj",
+  "projectFilePath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\AnimalsShelterSystem.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\1\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.11\\microsoft.aspnetcore.cryptography.internal.6.0.11.nupkg.sha512",

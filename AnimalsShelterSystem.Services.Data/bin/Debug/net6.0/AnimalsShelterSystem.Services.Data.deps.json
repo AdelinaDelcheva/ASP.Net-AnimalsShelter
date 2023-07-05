@@ -541,6 +541,9 @@
         }
       },
       "AnimalsShelterSystem.Web.ViewModels/1.0.0": {
+        "dependencies": {
+          "AnimalsShelterSystem.Common": "1.0.0"
+        },
         "runtime": {
           "AnimalsShelterSystem.Web.ViewModels.dll": {}
         }

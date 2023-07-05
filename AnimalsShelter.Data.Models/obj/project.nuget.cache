@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s/tFDrFX5A/rrIJcVtpWLEfMtPxaTJq06zDK3xHRSYwFoo2bwq7b2KTJqaWKF7iwtDWDTcK9tUksuoG0iMe/wA==",
+  "dgSpecHash": "hMROm3Dw/Kr0FKU9RfNU6ONPJ8lWDbj9qjdzG4j9609txzQX1N9JpAjRnG+Q3QC4YzReRB1d8i8WqZDTzrdGxA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data.Models\\AnimalsShelterSystem.Data.Models.csproj",
+  "projectFilePath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data.Models\\AnimalsShelterSystem.Data.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\1\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.11\\microsoft.aspnetcore.cryptography.internal.6.0.11.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.11\\microsoft.aspnetcore.cryptography.keyderivation.6.0.11.nupkg.sha512",

@@ -7,7 +7,9 @@ namespace AnimalsShelterSystem.Web.Controllers
     [Authorize]
     public class AnimalController : Controller
     {
-        public IActionResult Index()
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Index()
         {
             return View();
         }

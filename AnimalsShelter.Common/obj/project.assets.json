@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Common\\AnimalsShelterSystem.Common.csproj",
+      "projectUniqueName": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Common\\AnimalsShelterSystem.Common.csproj",
       "projectName": "AnimalsShelterSystem.Common",
-      "projectPath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Common\\AnimalsShelterSystem.Common.csproj",
+      "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Common\\AnimalsShelterSystem.Common.csproj",
       "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Common\\obj\\",
+      "outputPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",

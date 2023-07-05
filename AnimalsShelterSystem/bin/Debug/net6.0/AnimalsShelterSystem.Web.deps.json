@@ -580,6 +580,7 @@
       },
       "AnimalsShelterSystem.Web.Infrastructure/1.0.0": {
         "dependencies": {
+          "AnimalsShelterSystem.Services.Data": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
         },
         "runtime": {
@@ -587,6 +588,9 @@
         }
       },
       "AnimalsShelterSystem.Web.ViewModels/1.0.0": {
+        "dependencies": {
+          "AnimalsShelterSystem.Common": "1.0.0"
+        },
         "runtime": {
           "AnimalsShelterSystem.Web.ViewModels.dll": {}
         }

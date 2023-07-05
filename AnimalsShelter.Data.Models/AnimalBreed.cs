@@ -13,9 +13,9 @@
         public string Breed { get; set; } = null!;
 
 
-        [Required]
-        [MaxLength(DescriptionMaxLength)]
-        public string Description { get; set; } = null!;
+        //[Required]
+        //[MaxLength(DescriptionMaxLength)]
+        //public string Description { get; set; } = null!;
 
        
 

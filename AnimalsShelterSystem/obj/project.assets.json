@@ -1011,6 +1011,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "AnimalsShelterSystem.Services.Data": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
         },
         "compile": {
@@ -1023,6 +1024,9 @@
       "AnimalsShelterSystem.Web.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AnimalsShelterSystem.Common": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/AnimalsShelterSystem.Web.ViewModels.dll": {}
         },
@@ -2573,11 +2577,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\AnimalsShelterSystem.Web.csproj",
+      "projectUniqueName": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\AnimalsShelterSystem.Web.csproj",
       "projectName": "AnimalsShelterSystem.Web",
-      "projectPath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\AnimalsShelterSystem.Web.csproj",
+      "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\AnimalsShelterSystem.Web.csproj",
       "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\obj\\",
+      "outputPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2594,23 +2598,23 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Common\\AnimalsShelterSystem.Common.csproj": {
-              "projectPath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Common\\AnimalsShelterSystem.Common.csproj"
+            "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Common\\AnimalsShelterSystem.Common.csproj": {
+              "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Common\\AnimalsShelterSystem.Common.csproj"
             },
-            "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data.Models\\AnimalsShelterSystem.Data.Models.csproj": {
-              "projectPath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data.Models\\AnimalsShelterSystem.Data.Models.csproj"
+            "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data.Models\\AnimalsShelterSystem.Data.Models.csproj": {
+              "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data.Models\\AnimalsShelterSystem.Data.Models.csproj"
             },
-            "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data\\AnimalsShelterSystem.Data.csproj": {
-              "projectPath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data\\AnimalsShelterSystem.Data.csproj"
+            "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data\\AnimalsShelterSystem.Data.csproj": {
+              "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelter.Data\\AnimalsShelterSystem.Data.csproj"
             },
-            "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data\\AnimalsShelterSystem.Services.Data.csproj": {
-              "projectPath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data\\AnimalsShelterSystem.Services.Data.csproj"
+            "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data\\AnimalsShelterSystem.Services.Data.csproj": {
+              "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Services.Data\\AnimalsShelterSystem.Services.Data.csproj"
             },
-            "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Web.Infrastructure\\AnimalsShelterSystem.Web.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Web.Infrastructure\\AnimalsShelterSystem.Web.Infrastructure.csproj"
+            "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Web.Infrastructure\\AnimalsShelterSystem.Web.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Web.Infrastructure\\AnimalsShelterSystem.Web.Infrastructure.csproj"
             },
-            "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Web.ViewModels\\AnimalsShelterSystem.Web.ViewModels.csproj": {
-              "projectPath": "C:\\Users\\1\\source\\repos\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Web.ViewModels\\AnimalsShelterSystem.Web.ViewModels.csproj"
+            "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Web.ViewModels\\AnimalsShelterSystem.Web.ViewModels.csproj": {
+              "projectPath": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem.Web.ViewModels\\AnimalsShelterSystem.Web.ViewModels.csproj"
             }
           }
         }

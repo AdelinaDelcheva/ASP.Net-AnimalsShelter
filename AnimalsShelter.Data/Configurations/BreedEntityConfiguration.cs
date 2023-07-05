@@ -23,8 +23,8 @@ namespace AnimalsShelterSystem.Data.Configurations
             breed = new AnimalBreed()
             {
                 Id= 1,
-                Breed="Dog",
-                Description="Pomeranian"
+                Breed= "Dog Pomeranian"
+               
                 
             };
             breeds.Add(breed);
@@ -32,23 +32,22 @@ namespace AnimalsShelterSystem.Data.Configurations
             breed = new AnimalBreed()
             {
                 Id = 2,
-                Breed = "Cat",
-                Description = "Persian"
+                Breed = "Cat Persian"
+               
             };
             breeds.Add(breed);
             breed = new AnimalBreed()
             {
                 Id = 3,
-                Breed = "Parrot",
-                Description = "Ara"
+                Breed = "Parrot Ara"
+               
             };
             breeds.Add(breed);
 
             breed = new AnimalBreed()
             {
                 Id = 4,
-                Breed = "Dog",
-                Description = "Huski"
+                Breed = "Dog Huski"
             };
             breeds.Add(breed);
 

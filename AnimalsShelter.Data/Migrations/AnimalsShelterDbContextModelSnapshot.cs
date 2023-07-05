@@ -68,7 +68,7 @@ namespace AnimalsShelterSystem.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ec299e1e-0411-4cd6-a8dd-13411559b72b"),
+                            Id = new Guid("5110cb7f-8e41-47f2-8b39-639017355d88"),
                             Age = 2,
                             AnimalAdopterId = new Guid("a9bb84c2-3c92-4463-8d8b-fe7712553255"),
                             AnimalCareVolunteerId = new Guid("9c92331f-7bad-456f-871d-088b8b0df5fb"),
@@ -79,7 +79,7 @@ namespace AnimalsShelterSystem.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a71cf232-719e-43ac-81c2-a3ffb5c0b273"),
+                            Id = new Guid("0a449516-cf69-40c1-a59c-a71fbfc29b9a"),
                             Age = 4,
                             AnimalCareVolunteerId = new Guid("9c92331f-7bad-456f-871d-088b8b0df5fb"),
                             BreedId = 2,
@@ -102,11 +102,6 @@ namespace AnimalsShelterSystem.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Breeds");
@@ -115,26 +110,22 @@ namespace AnimalsShelterSystem.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Breed = "Dog",
-                            Description = "Pomeranian"
+                            Breed = "Dog Pomeranian"
                         },
                         new
                         {
                             Id = 2,
-                            Breed = "Cat",
-                            Description = "Persian"
+                            Breed = "Cat Persian"
                         },
                         new
                         {
                             Id = 3,
-                            Breed = "Parrot",
-                            Description = "Ara"
+                            Breed = "Parrot Ara"
                         },
                         new
                         {
                             Id = 4,
-                            Breed = "Dog",
-                            Description = "Huski"
+                            Breed = "Dog Huski"
                         });
                 });
 

@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "AnimalsShelterSystem.Web.ViewModels/1.0.0": {
+        "dependencies": {
+          "AnimalsShelterSystem.Common": "1.0.0"
+        },
         "runtime": {
           "AnimalsShelterSystem.Web.ViewModels.dll": {}
+        }
+      },
+      "AnimalsShelterSystem.Common/1.0.0": {
+        "runtime": {
+          "AnimalsShelterSystem.Common.dll": {}
         }
       }
     }
   },
   "libraries": {
     "AnimalsShelterSystem.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AnimalsShelterSystem.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
