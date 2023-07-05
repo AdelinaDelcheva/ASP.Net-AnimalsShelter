@@ -5,7 +5,7 @@
       
         public static class Animal
         {
-            public const int NameMinLength = 10;
+            public const int NameMinLength = 2;
             public const int NameMaxLength = 50;
 
             public const int AgeMinLength = 0;

@@ -16,7 +16,7 @@ namespace AnimalsShelterSystem.Services.Data
         {
             this.dbContext = dbContext;
         }
-        public async Task<IEnumerable<AnimalBreedFormModel>> AllCategoriesAsync()
+        public async Task<IEnumerable<AnimalBreedFormModel>> AllBreedsAsync()
         {
             IEnumerable<AnimalBreedFormModel> allBreeds = await this.dbContext
                 .Breeds
