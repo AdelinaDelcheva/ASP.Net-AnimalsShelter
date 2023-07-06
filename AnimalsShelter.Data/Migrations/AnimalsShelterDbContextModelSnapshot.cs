@@ -68,7 +68,7 @@ namespace AnimalsShelterSystem.Data.Migrations
 
                     b.HasIndex("BreedId");
 
-                    b.ToTable("Animals");
+                    b.ToTable("Animals", (string)null);
 
                     b.HasData(
                         new
@@ -111,7 +111,7 @@ namespace AnimalsShelterSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Breeds");
+                    b.ToTable("Breeds", (string)null);
 
                     b.HasData(
                         new
@@ -148,7 +148,7 @@ namespace AnimalsShelterSystem.Data.Migrations
 
                     b.HasIndex("AnimalId");
 
-                    b.ToTable("AnimalsCharacteristics");
+                    b.ToTable("AnimalsCharacteristics", (string)null);
                 });
 
             modelBuilder.Entity("AnimalsShelterSystem.Data.Models.ApplicationUser", b =>
@@ -239,7 +239,7 @@ namespace AnimalsShelterSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cares");
+                    b.ToTable("Cares", (string)null);
                 });
 
             modelBuilder.Entity("AnimalsShelterSystem.Data.Models.Characteristic", b =>
@@ -257,7 +257,7 @@ namespace AnimalsShelterSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Characteristics");
+                    b.ToTable("Characteristics", (string)null);
 
                     b.HasData(
                         new
@@ -313,7 +313,7 @@ namespace AnimalsShelterSystem.Data.Migrations
 
                     b.HasIndex("CreatorId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("AnimalsShelterSystem.Data.Models.OrderedCare", b =>
@@ -346,7 +346,7 @@ namespace AnimalsShelterSystem.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderedCares");
+                    b.ToTable("OrderedCares", (string)null);
                 });
 
             modelBuilder.Entity("AnimalsShelterSystem.Data.Models.Review", b =>
@@ -377,7 +377,7 @@ namespace AnimalsShelterSystem.Data.Migrations
 
                     b.HasIndex("CreatorId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("AnimalsShelterSystem.Data.Models.Volunteer", b =>
@@ -408,7 +408,7 @@ namespace AnimalsShelterSystem.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Volunteers");
+                    b.ToTable("Volunteers", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>

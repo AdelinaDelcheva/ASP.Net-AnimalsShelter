@@ -18,19 +18,7 @@
             <p>Breed: <b>@Model.Breed</b></p>
             
             
-          @if(Model.Characteristics.Any())
-           {
-                <ul class="list-group">
-                    <p>Characteristics:</p>
-                     @foreach(var c in Model.Characteristics)
-                     {
-                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                        @c
-                        <span class="badge bg-primary rounded-pill"><i class="bi bi-check-circle-fill"></i></span>
-                         </li>
-                     }
-                </ul>
-            }
+         
           
             <p><i>(@(Model.IsAdopted ? "Adopted" : "Not Adopted"))</i></p>
             <div class="form-inline">
@@ -58,13 +46,44 @@
                 }
             </div>
             <p></p>
+            @if (Model.Characteristics.Any())
+            {
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Characteristics:</h5>
+                        @foreach (var c in Model.Characteristics)
+                        {
+
+                            <p class="card-text"><i class="bi bi-check-circle-fill"></i> @c</p>
+
+
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Characteristics:</h5>
+                        <p> Not any characterists yet!</p>
+                        @if (this.User.Identity?.IsAuthenticated ?? false)
+
+                        {
+                            <a class="btn btn-warning" asp-controller="Animal" asp-action="AddCharacteristics"
+                       asp-route-id="@Model.Id">Add</a>
+                        }
+                    </div>
+                </div>
+            }
+             <p></p>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Volunteer Info</h5>
-                    <p class="card-text">Fist Name:  @Model.VolunteerInfo.FirstName</p>
-                    <p class="card-text">Last Name:  @Model.VolunteerInfo.LastName</p>
-                    <p class="card-text">Email:  @Model.VolunteerInfo.Email</p>
-                    <p class="card-text">Phone Number: @Model.VolunteerInfo.PhoneNumber</p>
+                    <h5 class="card-title"><i class="bi bi-person-vcard-fill"></i> Caretaker Info</h5>
+                    <p class="card-text"><i class="bi bi-person-fill"></i> Fist Name:  @Model.VolunteerInfo.FirstName</p>
+                    <p class="card-text"><i class="bi bi-person-fill"></i> Last Name:  @Model.VolunteerInfo.LastName</p>
+                    <p class="card-text"><i class="bi bi-envelope-heart-fill"></i> Email:  @Model.VolunteerInfo.Email</p>
+                    <p class="card-text"><i class="bi bi-telephone-outbound-fill"></i> Phone Number: @Model.VolunteerInfo.PhoneNumber</p>
                 </div>
             </div>
         </div>
