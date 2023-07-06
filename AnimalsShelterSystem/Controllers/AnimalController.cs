@@ -145,28 +145,112 @@ namespace AnimalsShelterSystem.Web.Controllers
                 return RedirectToAction("All", "Animal");
             }
             return View(model);
-            //bool animalExists = await this.animalService
-            //    .ExistsByIdAsync(id);
-            //if (!animalExists)
-            //{
-            //    this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
-
-            //    return this.RedirectToAction("All", "Animal");
-            //}
-
-            //try
-            //{
-            //    var viewModel = await this.animalService
-            //        .GetDetailsByIdAsync(id);
-
-            //    return View(viewModel);
-            //}
-            //catch (Exception)
-            //{
-            //    return Ok();
-            //}
+            
         }
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+            bool animalExists = await this.animalService
+                .ExistsByIdAsync(id);
+            if (!animalExists)
+            {
+                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+                return RedirectToAction("All", "Animal");
+            }
 
+            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+            if (!isVolunteer)
+            {
+
+                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
+                return this.RedirectToAction("Become", "Volunteer");
+            }
+
+            string? volunteerId =
+                    await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
+
+
+
+            bool isVolunteerCaretaker = await this.animalService
+                .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
+            if (!isVolunteerCaretaker)
+            {
+                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
+
+                return this.RedirectToAction("Mine", "Animal");
+            }
+
+            try
+            {
+                AnimalFormModel formModel = await this.animalService
+                    .GetAnimalForEditByIdAsync(id);
+                formModel.Breeds = await this.animalBreedService.AllBreedsAsync();
+
+                return this.View(formModel);
+            }
+            catch (Exception)
+            {
+                return this.GeneralError();
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(string id, AnimalFormModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                model.Breeds = await this.animalBreedService.AllBreedsAsync();
+
+                return this.View(model);
+            }
+
+            bool houseExists = await this.animalService
+                .ExistsByIdAsync(id);
+
+            if (!houseExists)
+            {
+                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+
+                return this.RedirectToAction("All", "Animal");
+            }
+
+            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+            if (!isVolunteer)
+            {
+
+                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
+                return this.RedirectToAction("Become", "Volunteer");
+            }
+
+            string? volunteerId =
+                    await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
+
+
+
+            bool isVolunteerCaretaker = await this.animalService
+                .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
+            if (!isVolunteerCaretaker)
+            {
+                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
+
+                return this.RedirectToAction("Mine", "Animal");
+            }
+
+            try
+            {
+                await this.animalService.EditAnimalByIdAndFormModelAsync(id, model);
+            }
+            catch (Exception)
+            {
+                this.ModelState.AddModelError(string.Empty,
+                    "Unexpected error occurred while trying to update the animal. Please try again later or contact administrator!");
+                model.Breeds = await this.animalBreedService.AllBreedsAsync();
+
+                return this.View(model);
+            }
+
+            this.TempData[SuccessMessage] = "Animal was edited successfully!";
+            return this.RedirectToAction("Details", "Animal", new { id });
+        }
         private IActionResult GeneralError()
         {
             this.TempData[ErrorMessage] =

@@ -17,8 +17,14 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
         Task<IEnumerable<AnimalAllViewModel>> AllByVolunteerIdAsync(string volunteerId);
 
         Task<IEnumerable<AnimalAllViewModel>> AllByUserIdAsync(string userId);
-        //Task<bool> ExistsByIdAsync(string animalId);
+        Task<bool> ExistsByIdAsync(string animalId);
 
         Task<AnimalDetailsViewModel?> GetDetailsByIdAsync(string animalId);
+
+        Task<bool> IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(string animalId,string volunteerId);
+
+        Task<AnimalFormModel> GetAnimalForEditByIdAsync(string animalId);
+
+        Task EditAnimalByIdAndFormModelAsync(string houseId, AnimalFormModel formModel);
     }
 }

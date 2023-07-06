@@ -137,10 +137,10 @@ namespace AnimalsShelterSystem.Services.Data
             return newAnimal.Id.ToString();
         }
 
-        //public async Task<bool> ExistsByIdAsync(string animalId)
-        //{
-        //    return await this.dbContext.Animals.AnyAsync(a => a.Id.ToString() == animalId);
-        //}
+        public async Task<bool> ExistsByIdAsync(string animalId)
+        {
+            return await this.dbContext.Animals.AnyAsync(a => a.Id.ToString() == animalId);
+        }
 
         public async Task<AnimalDetailsViewModel?> GetDetailsByIdAsync(string animalId)
         {
@@ -169,6 +169,30 @@ namespace AnimalsShelterSystem.Services.Data
             return animal;
         }
 
+        public async Task<bool> IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(string animalId, string volunteerId)
+        {
+            return await this.dbContext
+                 .Animals
+                 .AnyAsync(a =>a.IsDeleted==false && a.Id.ToString() == animalId && a.AnimalCareVolunteerId.ToString() == volunteerId);
+        }
+
+        public async Task EditAnimalByIdAndFormModelAsync(string animaId, AnimalFormModel formModel)
+        {
+            Animal animal = await this.dbContext
+                .Animals
+                .Where(a => a.IsDeleted==false)
+                .FirstAsync(a => a.Id.ToString() == animaId);
+
+            animal.Name = formModel.Name;
+            animal.Age = formModel.Age;
+
+            animal.ImageUrl = formModel.ImageUrl;
+           
+            animal.BreedId = formModel.BreedId;
+
+            await this.dbContext.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<IndexViewModel>> LastThreeAnimals()
         {
             var result = await dbContext.Animals
@@ -182,6 +206,23 @@ namespace AnimalsShelterSystem.Services.Data
                      ImageUrl = a.ImageUrl
                  })
                  .ToListAsync();
+
+            return result;
+        }
+
+        public async Task<AnimalFormModel> GetAnimalForEditByIdAsync(string animalId)
+        {
+            var result = await this.dbContext
+                .Animals
+                .Where(a => a.IsDeleted == false && a.Id.ToString() == animalId)
+                .Select(a => new AnimalFormModel()
+                {
+                    Name=a.Name,
+                    ImageUrl=a.ImageUrl,
+                    Age= a.Age,
+
+                    BreedId=a.BreedId
+                }).FirstAsync();
 
             return result;
         }
