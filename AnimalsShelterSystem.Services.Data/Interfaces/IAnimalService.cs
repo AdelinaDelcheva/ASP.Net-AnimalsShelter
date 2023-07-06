@@ -26,5 +26,7 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
         Task<AnimalFormModel> GetAnimalForEditByIdAsync(string animalId);
 
         Task EditAnimalByIdAndFormModelAsync(string houseId, AnimalFormModel formModel);
+        Task<AnimalPreDeletedViewModel> GetAnimalForDeleteByIdAsync(string animalId);
+        Task DeleteAnimalByIdAsync(string animalId);
     }
 }

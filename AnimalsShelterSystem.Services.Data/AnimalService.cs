@@ -226,5 +226,35 @@ namespace AnimalsShelterSystem.Services.Data
 
             return result;
         }
+
+        public async Task<AnimalPreDeletedViewModel> GetAnimalForDeleteByIdAsync(string animalId)
+        {
+            Animal animal = await this.dbContext
+               .Animals
+               .Include(a=>a.Breed)
+               .Where(a=>a.IsDeleted==false)
+               .FirstAsync(a => a.Id.ToString() == animalId);
+
+            return new AnimalPreDeletedViewModel
+            {
+                Name=animal.Name,
+                Breed=animal.Breed.Breed,
+                ImageUrl = animal.ImageUrl
+            };
+        }
+
+        public async Task DeleteAnimalByIdAsync(string houseId)
+        {
+            Animal animalToDelete = await this.dbContext
+                .Animals
+                .Where(h => h.IsDeleted==false)
+                .FirstAsync(h => h.Id.ToString() == houseId);
+
+            animalToDelete.IsDeleted = true;
+
+            await this.dbContext.SaveChangesAsync();
+        }
+
+
     }
 }

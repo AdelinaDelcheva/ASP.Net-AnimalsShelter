@@ -47,12 +47,18 @@ namespace AnimalsShelterSystem.Web.Controllers
                 this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
                 return this.RedirectToAction("Become", "Volunteer");
             }
-
-            AnimalFormModel animalFormModel = new AnimalFormModel()
+            try
             {
-                Breeds = await this.animalBreedService.AllBreedsAsync()
-            };
-            return View(animalFormModel);
+                AnimalFormModel animalFormModel = new AnimalFormModel()
+                {
+                    Breeds = await this.animalBreedService.AllBreedsAsync()
+                };
+                return View(animalFormModel);
+            }
+            catch (Exception)
+            {
+                return this.GeneralError();
+            }
         }
 
         [HttpPost]
@@ -203,10 +209,10 @@ namespace AnimalsShelterSystem.Web.Controllers
                 return this.View(model);
             }
 
-            bool houseExists = await this.animalService
+            bool animalExists = await this.animalService
                 .ExistsByIdAsync(id);
 
-            if (!houseExists)
+            if (!animalExists)
             {
                 this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
 
@@ -250,6 +256,102 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             this.TempData[SuccessMessage] = "Animal was edited successfully!";
             return this.RedirectToAction("Details", "Animal", new { id });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(string id)
+        {
+            bool animalExists = await this.animalService
+               .ExistsByIdAsync(id);
+
+            if (!animalExists)
+            {
+                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+
+                return this.RedirectToAction("All", "Animal");
+            }
+
+            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+            if (!isVolunteer)
+            {
+
+                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
+                return this.RedirectToAction("Become", "Volunteer");
+            }
+
+            string? volunteerId =
+                    await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
+
+
+
+            bool isVolunteerCaretaker = await this.animalService
+                .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
+            if (!isVolunteerCaretaker)
+            {
+                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
+
+                return this.RedirectToAction("Mine", "Animal");
+            }
+
+            try
+            {
+                AnimalPreDeletedViewModel viewModel =
+                    await this.animalService.GetAnimalForDeleteByIdAsync(id);
+
+                return this.View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.GeneralError();
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id, AnimalPreDeletedViewModel model)
+        {
+            bool animalExists = await this.animalService
+               .ExistsByIdAsync(id);
+
+            if (!animalExists)
+            {
+                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+
+                return this.RedirectToAction("All", "Animal");
+            }
+
+            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+            if (!isVolunteer)
+            {
+
+                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
+                return this.RedirectToAction("Become", "Volunteer");
+            }
+
+            string? volunteerId =
+                    await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
+
+
+
+            bool isVolunteerCaretaker = await this.animalService
+                .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
+            if (!isVolunteerCaretaker)
+            {
+                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
+
+                return this.RedirectToAction("Mine", "Animal");
+            }
+
+            try
+            {
+                await this.animalService.DeleteAnimalByIdAsync(id);
+
+                this.TempData[WarningMessage] = "The Animal was successfully deleted!";
+                return this.RedirectToAction("Mine", "Animal");
+            }
+            catch (Exception)
+            {
+                return this.GeneralError();
+            }
         }
         private IActionResult GeneralError()
         {
