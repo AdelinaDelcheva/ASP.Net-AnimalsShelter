@@ -25,10 +25,12 @@ C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Servi
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Common.dll
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Data.dll
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Data.Models.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Services.Data.Models.dll
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Web.ViewModels.dll
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Common.pdb
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Data.Models.pdb
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Data.pdb
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Services.Data.Models.pdb
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Web.ViewModels.pdb
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\obj\Debug\net6.0\AnimalsShelterSystem.Services.Data.csproj.AssemblyReference.cache
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\obj\Debug\net6.0\AnimalsShelterSystem.Services.Data.GeneratedMSBuildEditorConfig.editorconfig
@@ -40,5 +42,3 @@ C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Servi
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\obj\Debug\net6.0\refint\AnimalsShelterSystem.Services.Data.dll
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\obj\Debug\net6.0\AnimalsShelterSystem.Services.Data.pdb
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\obj\Debug\net6.0\ref\AnimalsShelterSystem.Services.Data.dll
-C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Services.Data.Models.dll
-C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Services.Data\bin\Debug\net6.0\AnimalsShelterSystem.Services.Data.Models.pdb

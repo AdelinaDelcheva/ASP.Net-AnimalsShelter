@@ -1,10 +1,4 @@
 ﻿
-
-
-
-
-
-
 namespace AnimalsShelterSystem.Data.Models
 {
     public class AnimalCharacteristics

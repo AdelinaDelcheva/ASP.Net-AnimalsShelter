@@ -3,16 +3,19 @@
 
 namespace AnimalsShelterSystem.Services.Data
 {
+    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using AnimalsShelterSystem.Data.Models;
     using AnimalsShelterSystem.Services.Data.Interfaces;
     using AnimalsShelterSystem.Services.Data.Models.Animal;
     using AnimalsShelterSystem.Web.Data;
     using AnimalsShelterSystem.Web.ViewModels.Animal;
     using AnimalsShelterSystem.Web.ViewModels.Animal.Enums;
+    using AnimalsShelterSystem.Web.ViewModels.Volunteeer;
     using AnimalsShelterSystem.Web.ViewModels.Home;
-    using Microsoft.EntityFrameworkCore;
+   
 
     public class AnimalService : IAnimalService
     {
@@ -82,6 +85,7 @@ namespace AnimalsShelterSystem.Services.Data
         {
             var result = await this.dbContext
                                  .Animals
+                                 .Where(a=>a.IsDeleted==false)
                                  .Where(a => a.AnimalAdopterId.HasValue && a.AnimalAdopterId.ToString() == userId)
                                  .Select(a => new AnimalAllViewModel()
                                  {
@@ -101,7 +105,7 @@ namespace AnimalsShelterSystem.Services.Data
         {
             var result = await this.dbContext
                               .Animals
-                              .Where(a => a.AnimalCareVolunteerId.ToString() == volunteerId)
+                              .Where(a =>a.IsDeleted==false && a.AnimalCareVolunteerId.ToString() == volunteerId)
                               .Select(a => new AnimalAllViewModel()
                               {
                                   Id = a.Id.ToString(),
@@ -131,6 +135,38 @@ namespace AnimalsShelterSystem.Services.Data
             await this.dbContext.SaveChangesAsync();
 
             return newAnimal.Id.ToString();
+        }
+
+        //public async Task<bool> ExistsByIdAsync(string animalId)
+        //{
+        //    return await this.dbContext.Animals.AnyAsync(a => a.Id.ToString() == animalId);
+        //}
+
+        public async Task<AnimalDetailsViewModel?> GetDetailsByIdAsync(string animalId)
+        {
+           
+
+            var animal = await this.dbContext.Animals.Where(a=>a.IsDeleted==false && a.Id.ToString() == animalId)
+                .Select(a => new AnimalDetailsViewModel()
+                {
+                    Id=animalId,
+                    Name=a.Name,
+                    Age=a.Age,
+                    ImageUrl=a.ImageUrl,
+                    Breed=a.Breed.Breed,
+                    IsAdopted=a.AnimalAdopterId.HasValue,
+                    VolunteerInfo=new VolunteerInfoOnAnimalViewModel()
+                    {
+                        FirstName= a.AnimalCareVolunteer.FirstName,
+                        LastName=a.AnimalCareVolunteer.LastName,
+                        Email=a.AnimalCareVolunteer.User.Email,
+                        PhoneNumber=a.AnimalCareVolunteer.PhoneNumber
+                    },
+                    Characteristics=a.Characteristics.Select(c=>c.Characteristic.Name).ToList()
+                    
+                }).FirstOrDefaultAsync();
+
+            return animal;
         }
 
         public async Task<IEnumerable<IndexViewModel>> LastThreeAnimals()

@@ -134,6 +134,39 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(string id)
+        {
+            AnimalDetailsViewModel? model=await this.animalService.GetDetailsByIdAsync(id);
+            if(model==null)
+            {
+                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+                return RedirectToAction("All", "Animal");
+            }
+            return View(model);
+            //bool animalExists = await this.animalService
+            //    .ExistsByIdAsync(id);
+            //if (!animalExists)
+            //{
+            //    this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+
+            //    return this.RedirectToAction("All", "Animal");
+            //}
+
+            //try
+            //{
+            //    var viewModel = await this.animalService
+            //        .GetDetailsByIdAsync(id);
+
+            //    return View(viewModel);
+            //}
+            //catch (Exception)
+            //{
+            //    return Ok();
+            //}
+        }
+
         private IActionResult GeneralError()
         {
             this.TempData[ErrorMessage] =
