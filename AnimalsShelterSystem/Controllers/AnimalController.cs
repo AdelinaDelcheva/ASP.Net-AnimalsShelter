@@ -16,12 +16,14 @@ namespace AnimalsShelterSystem.Web.Controllers
         private readonly IAnimalBreedService animalBreedService;
         private readonly IVolunteerService volunteerService;
         private readonly IAnimalService animalService;
+        private readonly ICharacteristicService characteristicService;
         public AnimalController(IAnimalBreedService animalBreedService, IVolunteerService volunteerService,
-                                IAnimalService animalService)
+                                IAnimalService animalService, ICharacteristicService characteristicService)
         {
             this.animalBreedService = animalBreedService;
             this.volunteerService = volunteerService;
             this.animalService = animalService;
+            this.characteristicService = characteristicService;
         }
 
 
@@ -353,6 +355,54 @@ namespace AnimalsShelterSystem.Web.Controllers
                 return this.GeneralError();
             }
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> AddCharacteristic(string id)
+        {
+            bool animalExists = await this.animalService
+                .ExistsByIdAsync(id);
+            if (!animalExists)
+            {
+                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+                return RedirectToAction("All", "Animal");
+            }
+
+            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+            if (!isVolunteer)
+            {
+
+                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
+                return this.RedirectToAction("Become", "Volunteer");
+            }
+            string? volunteerId =
+                   await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
+
+
+
+            bool isVolunteerCaretaker = await this.animalService
+                .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
+            if (!isVolunteerCaretaker)
+            {
+                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
+
+                return this.RedirectToAction("Mine", "Animal");
+            }
+
+            try
+            {
+                AnimalAddCharacteristicViewModel formModel = await this.animalService
+                    .GetAnimalForAddingCharacteristictByIdAsync(id);
+                formModel.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
+
+                return this.View(formModel);
+            }
+            catch (Exception)
+            {
+                return this.GeneralError();
+            }
+        }
+
         private IActionResult GeneralError()
         {
             this.TempData[ErrorMessage] =

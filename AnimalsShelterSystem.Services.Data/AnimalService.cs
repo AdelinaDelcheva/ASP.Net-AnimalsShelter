@@ -255,6 +255,20 @@ namespace AnimalsShelterSystem.Services.Data
             await this.dbContext.SaveChangesAsync();
         }
 
+        public async Task<AnimalAddCharacteristicViewModel> GetAnimalForAddingCharacteristictByIdAsync(string animalId)
+        {
+            var result = await this.dbContext
+                .Animals
+                .Where(a => a.IsDeleted == false && a.Id.ToString() == animalId)
+                .Select(a => new AnimalAddCharacteristicViewModel()
+                {
+                    Name = a.Name,
+                    ImageUrl = a.ImageUrl,
+                    Age = a.Age,
+                    Breed=a.Breed.Breed                  
+                }).FirstAsync();
 
+            return result;
+        }
     }
 }

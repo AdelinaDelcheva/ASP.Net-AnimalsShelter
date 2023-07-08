@@ -1,0 +1,44 @@
+﻿@model AnimalAddCharacteristicViewModel
+@{
+    ViewData["Title"] = "Add Animal Characteristic";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+
+<div class="container" style="display:inline">
+    <div class="row">
+        <div class="col-4">
+            <img class="card-img-top" style="width: 20rem;"
+                 src="@Model.ImageUrl" alt="Animal Image">
+        </div>
+        <div class="card col-8 border-0">
+            <p style="font-size:25px;"><u>@Model.Name</u></p>
+            <p>Breed: <b>@Model.Breed</b></p>
+
+
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="CharacteristicId"></label>
+                <select asp-for="CharacteristicId" class="form-control">
+                    @foreach (var ch in Model.AllCharacteristics)
+                    {
+                        <option value="@ch.Id">@ch.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CharacteristicId" class="small text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <input class="btn btn-primary mt-3" type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}
