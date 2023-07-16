@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "1BYMEmsKOHdM4Jm5dx8mzgG8NhbvFcLc6dHN8lSlcMY=",
+  "Source": "AnimalShelterSystem.WebApi",
+  "BasePath": "_content/AnimalShelterSystem.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

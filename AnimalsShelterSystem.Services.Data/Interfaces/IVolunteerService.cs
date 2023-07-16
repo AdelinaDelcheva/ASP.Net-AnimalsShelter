@@ -10,5 +10,7 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
         Task Create(string userId, BecomeVolunteerFormModel model);
 
         Task<string?> GetVolunteerIdByUserIdAsync(string userId);
+
+        Task<bool> HasAnimalWithIdAsync(string? userId, string animalId);
     }
 }

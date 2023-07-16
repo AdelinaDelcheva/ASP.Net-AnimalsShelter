@@ -9,6 +9,8 @@ namespace AnimalsShelterSystem.Web
     using AnimalsShelterSystem.Services.Data.Interfaces;
     using AnimalsShelterSystem.Web.Infrastructure.Extensitions;
     using AnimalsShelterSystem.Web.Infrastructure.ModelBinders;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
 
     public class Program
     {
@@ -44,6 +46,7 @@ namespace AnimalsShelterSystem.Web
                 .AddMvcOptions(opt =>
                 {
                     opt.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+                    opt.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
                 });
 
             var app = builder.Build();

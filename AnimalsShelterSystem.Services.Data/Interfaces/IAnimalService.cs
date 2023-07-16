@@ -1,6 +1,7 @@
 ﻿
 
 using AnimalsShelterSystem.Services.Data.Models.Animal;
+using AnimalsShelterSystem.Services.Data.Models.Statistics;
 using AnimalsShelterSystem.Web.ViewModels.Animal;
 using AnimalsShelterSystem.Web.ViewModels.Home;
 
@@ -32,5 +33,7 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
 
         Task<AnimalAddCharacteristicViewModel> GetCharacteristicByIdAsync(string animalId);
         Task AddAnimalCharactericticByIdAsync(string animalId, AnimalAddCharacteristicViewModel model);
+
+        Task<StatisticsServiceModel> GetStatisticsAsync();
     }
 }

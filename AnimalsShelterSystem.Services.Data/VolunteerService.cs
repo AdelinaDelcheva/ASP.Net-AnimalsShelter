@@ -9,6 +9,7 @@ namespace AnimalsShelterSystem.Services.Data
     using AnimalsShelterSystem.Web.Data;
     using AnimalsShelterSystem.Web.ViewModels.Volunteeer;
     using AnimalsShelterSystem.Data.Models;
+    using Microsoft.EntityFrameworkCore.Internal;
 
     public class VolunteerService : IVolunteerService
     {
@@ -63,6 +64,25 @@ namespace AnimalsShelterSystem.Services.Data
             }
 
             return volunteer.Id.ToString();
+        }
+
+        public async Task<bool> HasAnimalWithIdAsync(string? userId, string animalId)
+        {
+           
+            Volunteer? cur=await dbContext.Volunteers.Include(v=>v.AnimalsCare)
+                .FirstOrDefaultAsync(v=>v.UserId.ToString()==userId);
+           
+
+            if (cur == null)
+            {
+                return false;
+            }
+            animalId = animalId.ToLower();
+            return cur.AnimalsCare.Any(a=>a.Id.ToString()==animalId);
+
+          //return await dbContext
+          //      .Volunteers
+          //      .AnyAsync(v=>v.UserId.ToString()==userId && v.AnimalsCare.Any(a=>a.Id.ToString()==animalId));
         }
     }
 }

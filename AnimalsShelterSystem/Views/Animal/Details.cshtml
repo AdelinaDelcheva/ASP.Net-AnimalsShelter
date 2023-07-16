@@ -1,4 +1,11 @@
-﻿@model AnimalDetailsViewModel
+﻿@using AnimalsShelterSystem.Services.Data.Interfaces;
+@using AnimalsShelterSystem.Web.Infrastructure.Extensitions;
+@model AnimalDetailsViewModel
+@inject IVolunteerService VolunteerService
+@{
+    bool isVolunteer = await this.VolunteerService.VolunteerExistsByUserIdAsync(this.User.GetId());
+    bool isVolunteerTheCareTaker = await this.VolunteerService.HasAnimalWithIdAsync(this.User.GetId(), Model.Id);
+}
 
 @{
     ViewBag.Title = "Animal Details";
@@ -24,11 +31,13 @@
             <div class="form-inline">
                 @if (this.User.Identity?.IsAuthenticated ?? false)
                 {
-                    <a class="btn btn-warning" asp-controller="Animal" asp-action="Edit"
+                    @if (isVolunteer && isVolunteerTheCareTaker)
+                    {
+                        <a class="btn btn-warning" asp-controller="Animal" asp-action="Edit"
                    asp-route-id="@Model.Id">Edit</a>
-                    <a class="ml-2 btn btn-danger" asp-controller="Animal" asp-action="Delete"
+                        <a class="ml-2 btn btn-danger" asp-controller="Animal" asp-action="Delete"
                        asp-route-id="@Model.Id">Delete</a>
-
+                    }
                     @if (!Model.IsAdopted)
                     {
                             <form class="ml-2" asp-controller="Animal"
@@ -70,8 +79,11 @@
                         @if (this.User.Identity?.IsAuthenticated ?? false)
 
                         {
+                            @if (isVolunteer && isVolunteerTheCareTaker)
+                            {
                             <a class="btn btn-warning" asp-controller="Animal" asp-action="AddCharacteristic"
                        asp-route-id="@Model.Id">Add</a>
+                            }
                         }
                     </div>
                 </div>

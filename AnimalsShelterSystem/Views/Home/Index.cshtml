@@ -1,9 +1,13 @@
-﻿@model IEnumerable<IndexViewModel>
+﻿@using AnimalsShelterSystem.Services.Data.Interfaces;
+@using AnimalsShelterSystem.Web.Infrastructure.Extensitions;
+@model IEnumerable<IndexViewModel>
+@inject IVolunteerService VolunteerService
 
 @{
     ViewData["Title"] = "Home Page";
 
     var houses = Model.ToList();
+    bool isVolunteer = await this.VolunteerService.VolunteerExistsByUserIdAsync(this.User.GetId());
 }
 
 @if (!houses.Any())
@@ -18,8 +22,12 @@
         <p class="lead">
             @if (User.Identity?.IsAuthenticated ?? false)
             {
-                <a asp-controller="Animal" asp-action="Add" class="btn btn-primary btn-lg"
-           role="button">Add House</a>
+                @if (isVolunteer)
+                {
+                    <a asp-controller="Animal" asp-action="Add" class="btn btn-primary btn-lg"
+           role="button">Add Animal</a>
+                }
+                
             }
         </p>
     </div>
@@ -53,3 +61,22 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+<div class="mb-5"></div>
+
+<div class="row">
+    <div class="col-12 text-center">
+        <button class="btn btn-primary" id="statistics_btn">Show Statistics</button>
+    </div>
+</div>
+
+<div class="mt-4 p-5 bg-light d-none" id="statistics_box">
+    <div class="row">
+        <h2 class="col-md-6 text-center" id="total_animals"></h2>
+        <h2 class="col-md-6 text-center" id="total_adoptions"></h2>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script>statistics();</script>
+}

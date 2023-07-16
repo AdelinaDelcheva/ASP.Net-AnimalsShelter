@@ -1,6 +1,4 @@
 ﻿
-
-
 namespace AnimalsShelterSystem.Services.Data
 {
     using Microsoft.EntityFrameworkCore;
@@ -15,7 +13,7 @@ namespace AnimalsShelterSystem.Services.Data
     using AnimalsShelterSystem.Web.ViewModels.Animal.Enums;
     using AnimalsShelterSystem.Web.ViewModels.Volunteeer;
     using AnimalsShelterSystem.Web.ViewModels.Home;
-   
+    using AnimalsShelterSystem.Services.Data.Models.Statistics;
 
     public class AnimalService : IAnimalService
     {
@@ -295,6 +293,16 @@ namespace AnimalsShelterSystem.Services.Data
                 }).FirstOrDefaultAsync();
 
             return animal;
+        }
+
+        public async Task<StatisticsServiceModel> GetStatisticsAsync()
+        {
+            return new StatisticsServiceModel()
+            {
+                TotalAnimals = await dbContext.Animals.Where(a => a.IsDeleted == false).CountAsync(),
+                TotalAdoptions = await dbContext.Animals.Where(a => a.AnimalAdopterId.HasValue).CountAsync()
+            };
+
         }
     }
 }

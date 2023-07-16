@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalsShelterSystem.Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalsShelterSystem.Web.Infrastructure", "AnimalsShelterSystem.Web.Infrastructure\AnimalsShelterSystem.Web.Infrastructure.csproj", "{87AF770B-0821-4E89-BB93-4CBC049E2467}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalsShelterSystem.Services.Data.Models", "AnimalsShelterSystem.Services.Data.Models\AnimalsShelterSystem.Services.Data.Models.csproj", "{BA50509E-66BC-4EA4-B6F8-34930213A71D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalsShelterSystem.Services.Data.Models", "AnimalsShelterSystem.Services.Data.Models\AnimalsShelterSystem.Services.Data.Models.csproj", "{BA50509E-66BC-4EA4-B6F8-34930213A71D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalShelterSystem.WebApi", "AnimalShelterSystem.WebApi\AnimalShelterSystem.WebApi.csproj", "{8784148D-8ACB-41C0-9221-6FFAF2B25433}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{BA50509E-66BC-4EA4-B6F8-34930213A71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA50509E-66BC-4EA4-B6F8-34930213A71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA50509E-66BC-4EA4-B6F8-34930213A71D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8784148D-8ACB-41C0-9221-6FFAF2B25433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8784148D-8ACB-41C0-9221-6FFAF2B25433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8784148D-8ACB-41C0-9221-6FFAF2B25433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8784148D-8ACB-41C0-9221-6FFAF2B25433}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{35081622-74A9-4791-96AE-E4580507A16A} = {A3825956-A54F-4EF6-B3A5-9B1BDAE6F4A7}
 		{87AF770B-0821-4E89-BB93-4CBC049E2467} = {FA3356E0-1058-4381-AAFE-DD177321D59D}
 		{BA50509E-66BC-4EA4-B6F8-34930213A71D} = {A3825956-A54F-4EF6-B3A5-9B1BDAE6F4A7}
+		{8784148D-8ACB-41C0-9221-6FFAF2B25433} = {FA3356E0-1058-4381-AAFE-DD177321D59D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A24C8634-C287-468A-A508-EDBBD73B7FE6}

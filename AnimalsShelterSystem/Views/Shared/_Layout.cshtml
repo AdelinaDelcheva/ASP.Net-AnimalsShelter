@@ -1,4 +1,11 @@
-﻿@using static AnimalsShelterSystem.Common.GeneralApplicationConstants;
+﻿@using AnimalsShelterSystem.Services.Data.Interfaces;
+@using AnimalsShelterSystem.Web.Infrastructure.Extensitions;
+@using static AnimalsShelterSystem.Common.GeneralApplicationConstants;
+
+@inject IVolunteerService VolunteerService
+@{
+    bool isVolunteer = await this.VolunteerService.VolunteerExistsByUserIdAsync(this.User.GetId());
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,9 +43,13 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Animal" asp-action="Mine">My Animals</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Animal" asp-action="Add">Add Animal</a>
-                            </li>
+
+                            @if (isVolunteer)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Animal" asp-action="Add">Add Animal</a>
+                                </li>
+                            }
                         }
                     </ul>
                     <partial name="_LoginPartial" />
