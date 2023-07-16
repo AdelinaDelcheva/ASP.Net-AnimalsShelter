@@ -225,7 +225,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             if (!isVolunteer)
             {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
+                this.TempData[ErrorMessage] = "You must be a volunteer in order to edit the animal!";
                 return this.RedirectToAction("Become", "Volunteer");
             }
 
@@ -372,7 +372,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             if (!isVolunteer)
             {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
+                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal characteristic!";
                 return this.RedirectToAction("Become", "Volunteer");
             }
             string? volunteerId =
@@ -391,16 +391,78 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             try
             {
-                AnimalAddCharacteristicViewModel formModel = await this.animalService
-                    .GetAnimalForAddingCharacteristictByIdAsync(id);
-                formModel.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
+                AnimalAddCharacteristicViewModel formModel = await this.animalService.GetCharacteristicByIdAsync(id);
+              
+                    formModel.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
+                    return this.View(formModel);
+                
 
-                return this.View(formModel);
+               
             }
             catch (Exception)
             {
                 return this.GeneralError();
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddCharacteristic(string id, AnimalAddCharacteristicViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                var errors = ModelState.Select(m => m.Value.Errors).Where(c => c.Count > 0).ToList();
+                model.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
+
+                return NotFound();
+            }
+
+            bool animalExists = await this.animalService
+                .ExistsByIdAsync(id);
+
+            if (!animalExists)
+            {
+                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+
+                return this.RedirectToAction("All", "Animal");
+            }
+
+            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+            if (!isVolunteer)
+            {
+
+                this.TempData[ErrorMessage] = "You must be a volunteer in order to edit the animal!";
+                return this.RedirectToAction("Become", "Volunteer");
+            }
+
+            string? volunteerId =
+                    await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
+
+
+
+            bool isVolunteerCaretaker = await this.animalService
+                .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
+            if (!isVolunteerCaretaker)
+            {
+                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
+
+                return this.RedirectToAction("Mine", "Animal");
+            }
+
+            try
+            {
+                await this.animalService.AddAnimalCharactericticByIdAsync(id, model);
+            }
+            catch (Exception)
+            {
+                this.ModelState.AddModelError(string.Empty,
+                    "Unexpected error occurred while trying to update the animal. Please try again later or contact administrator!");
+                model.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
+
+                return this.View(model);
+            }
+
+            this.TempData[SuccessMessage] = "Animal characteristic was added successfully!";
+            return this.RedirectToAction("Details", "Animal", new { id });
         }
 
         private IActionResult GeneralError()

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "N1/nw+VPwdnwybS1Cz3gUgjMgbp4P7GYqGkKy4qq5qs=",
+  "Hash": "Pyq+V1Z6mvGSizbA4s1WFbcRMIUIEu69W0fcSG/uMF4=",
   "Source": "AnimalsShelterSystem.Web",
   "BasePath": "_content/AnimalsShelterSystem.Web",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\AnimalsShelterSystem.Web.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\Error.css",
+      "SourceId": "AnimalsShelterSystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\",
+      "BasePath": "_content/AnimalsShelterSystem.Web",
+      "RelativePath": "css/Error.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Error.css"
     },
     {
       "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\site.css",

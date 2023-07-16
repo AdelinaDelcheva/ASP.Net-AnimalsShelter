@@ -139,7 +139,9 @@ namespace AnimalsShelterSystem.Services.Data
 
         public async Task<bool> ExistsByIdAsync(string animalId)
         {
-            return await this.dbContext.Animals.AnyAsync(a => a.Id.ToString() == animalId);
+            return await this.dbContext
+                .Animals
+                .AnyAsync(a =>a.IsDeleted==false && a.Id.ToString() == animalId);
         }
 
         public async Task<AnimalDetailsViewModel?> GetDetailsByIdAsync(string animalId)
@@ -176,12 +178,12 @@ namespace AnimalsShelterSystem.Services.Data
                  .AnyAsync(a =>a.IsDeleted==false && a.Id.ToString() == animalId && a.AnimalCareVolunteerId.ToString() == volunteerId);
         }
 
-        public async Task EditAnimalByIdAndFormModelAsync(string animaId, AnimalFormModel formModel)
+        public async Task EditAnimalByIdAndFormModelAsync(string animalId, AnimalFormModel formModel)
         {
             Animal animal = await this.dbContext
                 .Animals
                 .Where(a => a.IsDeleted==false)
-                .FirstAsync(a => a.Id.ToString() == animaId);
+                .FirstAsync(a => a.Id.ToString() == animalId);
 
             animal.Name = formModel.Name;
             animal.Age = formModel.Age;
@@ -243,32 +245,56 @@ namespace AnimalsShelterSystem.Services.Data
             };
         }
 
-        public async Task DeleteAnimalByIdAsync(string houseId)
+        public async Task DeleteAnimalByIdAsync(string animalId)
         {
             Animal animalToDelete = await this.dbContext
                 .Animals
                 .Where(h => h.IsDeleted==false)
-                .FirstAsync(h => h.Id.ToString() == houseId);
+                .FirstAsync(h => h.Id.ToString() == animalId);
 
             animalToDelete.IsDeleted = true;
 
             await this.dbContext.SaveChangesAsync();
         }
 
-        public async Task<AnimalAddCharacteristicViewModel> GetAnimalForAddingCharacteristictByIdAsync(string animalId)
+        
+
+        public async Task AddAnimalCharactericticByIdAsync(string animalId, AnimalAddCharacteristicViewModel model)
         {
-            var result = await this.dbContext
-                .Animals
-                .Where(a => a.IsDeleted == false && a.Id.ToString() == animalId)
+            Animal animal = await this.dbContext
+                   .Animals
+                   .Include(a => a.Characteristics)
+                   .Where(a => a.IsDeleted == false)
+            .FirstAsync(a => a.Id.ToString() == animalId);
+
+         
+
+
+
+            animal.Characteristics.Add(new AnimalCharacteristics()
+            {
+                CharacteristicId = model.CharacteristicId,
+                AnimalId = animal.Id
+            });
+
+
+
+            await this.dbContext.SaveChangesAsync();
+        }
+
+        public async Task<AnimalAddCharacteristicViewModel> GetCharacteristicByIdAsync(string animalId)
+        {
+            var animal = await this.dbContext.Animals.Where(a => a.IsDeleted == false && a.Id.ToString() == animalId)
                 .Select(a => new AnimalAddCharacteristicViewModel()
                 {
+                    Id = animalId,
                     Name = a.Name,
-                    ImageUrl = a.ImageUrl,
-                    Age = a.Age,
-                    Breed=a.Breed.Breed                  
-                }).FirstAsync();
+                    ImageUrl=a.ImageUrl,
+                    Breed=a.Breed.Breed
+              
+                }).FirstOrDefaultAsync();
 
-            return result;
+            return animal;
         }
     }
 }

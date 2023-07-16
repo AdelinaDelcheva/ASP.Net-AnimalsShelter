@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\AnimalsShelterSystem.Web.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\Error.css",
+      "PackagePath": "staticwebassets\\css\\Error.css"
+    },
+    {
       "Id": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

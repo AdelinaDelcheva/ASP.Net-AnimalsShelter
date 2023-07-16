@@ -25,10 +25,12 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
 
         Task<AnimalFormModel> GetAnimalForEditByIdAsync(string animalId);
 
-        Task EditAnimalByIdAndFormModelAsync(string houseId, AnimalFormModel formModel);
+        Task EditAnimalByIdAndFormModelAsync(string animalId, AnimalFormModel formModel);
         Task<AnimalPreDeletedViewModel> GetAnimalForDeleteByIdAsync(string animalId);
         Task DeleteAnimalByIdAsync(string animalId);
 
-        Task<AnimalAddCharacteristicViewModel> GetAnimalForAddingCharacteristictByIdAsync(string animalId);
+
+        Task<AnimalAddCharacteristicViewModel> GetCharacteristicByIdAsync(string animalId);
+        Task AddAnimalCharactericticByIdAsync(string animalId, AnimalAddCharacteristicViewModel model);
     }
 }
