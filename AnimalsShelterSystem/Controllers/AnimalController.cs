@@ -9,6 +9,7 @@ namespace AnimalsShelterSystem.Web.Controllers
     using AnimalsShelterSystem.Web.Infrastructure.Extensitions;
     using AnimalsShelterSystem.Web.ViewModels.Animal;
     using AnimalsShelterSystem.Services.Data.Models.Animal;
+    
 
     [Authorize]
     public class AnimalController : Controller
@@ -17,13 +18,16 @@ namespace AnimalsShelterSystem.Web.Controllers
         private readonly IVolunteerService volunteerService;
         private readonly IAnimalService animalService;
         private readonly ICharacteristicService characteristicService;
+        
         public AnimalController(IAnimalBreedService animalBreedService, IVolunteerService volunteerService,
                                 IAnimalService animalService, ICharacteristicService characteristicService)
+           
         {
             this.animalBreedService = animalBreedService;
             this.volunteerService = volunteerService;
             this.animalService = animalService;
             this.characteristicService = characteristicService;
+           
         }
 
 
@@ -447,7 +451,13 @@ namespace AnimalsShelterSystem.Web.Controllers
 
                 return this.RedirectToAction("Mine", "Animal");
             }
+            bool isCharactExist = await this.characteristicService.ExistsByIdAsync(model.CharacteristicId);
+            if(!isCharactExist)
+            {
+                this.TempData[ErrorMessage] = "The category ID does not exist";
 
+                return this.RedirectToAction("Details", "Animal", new { id });
+            }
             try
             {
                 await this.animalService.AddAnimalCharactericticByIdAsync(id, model);
@@ -462,6 +472,75 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
 
             this.TempData[SuccessMessage] = "Animal characteristic was added successfully!";
+            return this.RedirectToAction("Details", "Animal", new { id });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveCharacteristic(string id,int model)
+        {
+           
+
+
+            if (!this.ModelState.IsValid)
+            {
+               
+                
+
+                return NotFound();
+            }
+
+            bool animalExists = await this.animalService
+                .ExistsByIdAsync(id);
+
+            if (!animalExists)
+            {
+                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+
+                return this.RedirectToAction("All", "Animal");
+            }
+
+            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+            if (!isVolunteer)
+            {
+
+                this.TempData[ErrorMessage] = "You must be a volunteer in order to edit the animal!";
+                return this.RedirectToAction("Become", "Volunteer");
+            }
+
+            string? volunteerId =
+                    await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
+
+
+
+            bool isVolunteerCaretaker = await this.animalService
+                .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
+            if (!isVolunteerCaretaker)
+            {
+                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
+
+                return this.RedirectToAction("Mine", "Animal");
+            }
+            bool isCharactExist = await this.characteristicService.ExistsByIdAsync(model);
+            if (!isCharactExist)
+            {
+                this.TempData[ErrorMessage] = "The category ID does not exist";
+              
+
+                return this.RedirectToAction("Details", "Animal", new { id});
+            }
+            try
+            {
+                await this.animalService.RemoveAnimalCharactericticByIdAsync(model, id);
+            }
+            catch (Exception)
+            {
+                this.ModelState.AddModelError(string.Empty,
+                    "Unexpected error occurred while trying to update the animal. Please try again later or contact administrator!");
+                return this.RedirectToAction("Details", "Animal", new { id });
+            }
+
+            this.TempData[SuccessMessage] = "Animal characteristic was removed successfully!";
+            
             return this.RedirectToAction("Details", "Animal", new { id });
         }
 

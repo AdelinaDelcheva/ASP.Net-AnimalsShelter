@@ -14,6 +14,7 @@ namespace AnimalsShelterSystem.Services.Data
     using AnimalsShelterSystem.Web.ViewModels.Volunteeer;
     using AnimalsShelterSystem.Web.ViewModels.Home;
     using AnimalsShelterSystem.Services.Data.Models.Statistics;
+    using AnimalsShelterSystem.Web.ViewModels.Characteristic;
 
     public class AnimalService : IAnimalService
     {
@@ -162,7 +163,10 @@ namespace AnimalsShelterSystem.Services.Data
                         Email=a.AnimalCareVolunteer.User.Email,
                         PhoneNumber=a.AnimalCareVolunteer.PhoneNumber
                     },
-                    Characteristics=a.Characteristics.Select(c=>c.Characteristic.Name).ToList()
+                    Characteristics=a.Characteristics.Select(c=>new CharacteristicViewModel(){
+                        Id=c.Characteristic.Id,
+                        Name=c.Characteristic.Name
+                    }).ToList()
                     
                 }).FirstOrDefaultAsync();
 
@@ -303,6 +307,18 @@ namespace AnimalsShelterSystem.Services.Data
                 TotalAdoptions = await dbContext.Animals.Where(a => a.AnimalAdopterId.HasValue).CountAsync()
             };
 
+        }
+
+        public async Task RemoveAnimalCharactericticByIdAsync(int id, string animalId)
+        {
+            var exist = await this.dbContext.AnimalsCharacteristics
+                .FirstOrDefaultAsync(a => a.AnimalId.ToString() == animalId && a.CharacteristicId == id);
+            if (exist!=null)
+            {
+                AnimalCharacteristics curent = exist;
+                this.dbContext.AnimalsCharacteristics.Remove(curent);
+                await this.dbContext.SaveChangesAsync();
+            }
         }
     }
 }

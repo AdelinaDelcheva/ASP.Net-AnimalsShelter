@@ -6,16 +6,16 @@
 @{
     ViewData["Title"] = "Home Page";
 
-    var houses = Model.ToList();
+    var animals = Model.ToList();
     bool isVolunteer = await this.VolunteerService.VolunteerExistsByUserIdAsync(this.User.GetId());
 }
 
-@if (!houses.Any())
+@if (!animals.Any())
 {
     <div class="mt-4 p-5 bg-light">
-        <h1 class="display-4">Welcome to the best place for renting houses!</h1>
+        <h1 class="display-4">Welcome to the best place for renting animals!</h1>
         <p class="lead">
-            There are no houses in the system currently available
+            There are no animals in the system currently available
             so why don't you just add one?
         </p>
         <hr class="my-4">
@@ -37,16 +37,16 @@
 
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        @for (int i = 0; i < houses.Count(); i++)
+        @for (int i = 0; i < animals.Count(); i++)
         {
-            var house = houses[i];
+            var animal = animals[i];
             <div class="carousel-item @(i == 0 ? "active" : string.Empty)">
                 <img class="d-block w-100" style="height:500px"
-                 src="@house.ImageUrl" alt="@house.Name">
+                 src="@animal.ImageUrl" alt="@animal.Name">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>
                         <a class="btn btn-primary" asp-controller="Animal" asp-action="Details"
-                       asp-route-id="@house.Id"> @house.Name</a>
+                       asp-route-id="@animal.Id"> @animal.Name</a>
                     </h5>
                 </div>
             </div>

@@ -9,7 +9,8 @@
 
 @{
     ViewBag.Title = "Animal Details";
-}
+ 
+ }
 
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
@@ -23,12 +24,12 @@
         <div class="card col-8 border-0">
             <p style="font-size:25px;"><u>@Model.Name</u></p>
             <p>Breed: <b>@Model.Breed</b></p>
-            
+            <p>Age: <b>@Model.Age</b></p>
             
          
           
             <p><i>(@(Model.IsAdopted ? "Adopted" : "Not Adopted"))</i></p>
-            <div class="form-inline">
+            <div class="flex" style="display:flex;justify-content:flex-start;align-items:center;align-content:center;gap:24px;">
                 @if (this.User.Identity?.IsAuthenticated ?? false)
                 {
                     @if (isVolunteer && isVolunteerTheCareTaker)
@@ -37,21 +38,17 @@
                    asp-route-id="@Model.Id">Edit</a>
                         <a class="ml-2 btn btn-danger" asp-controller="Animal" asp-action="Delete"
                        asp-route-id="@Model.Id">Delete</a>
+                       
                     }
+                    
                     @if (!Model.IsAdopted)
                     {
-                            <form class="ml-2" asp-controller="Animal"
+                            <form class="flex" style="display:flex;width:33%" asp-controller="Animal"
                           asp-action="Adopt" asp-route-id="@Model.Id" method="post">
-                                <input class="btn btn-primary" type="submit" value="Adopt" />
+                                <input class="btn btn-primary"  type="submit" value="Adopt" />
                             </form>
                     }
-                    else
-                    {
-                            <form class="ml-2" asp-controller="Animal" asp-action="Leave"
-                          asp-route-id="@Model.Id" method="post">
-                                <input class="btn btn-primary" type="submit" value="Leave" />
-                            </form>
-                    }
+                    
                 }
             </div>
             <p></p>
@@ -63,9 +60,33 @@
                         @foreach (var c in Model.Characteristics)
                         {
 
-                            <p class="card-text"><i class="bi bi-check-circle-fill"></i> @c</p>
+                            <p class="card-text"><i class="bi bi-check-circle-fill"></i> @c.Name</p>
+                            @if (this.User.Identity?.IsAuthenticated ?? false)
+
+                            {
+                                @if (isVolunteer && isVolunteerTheCareTaker)
+                                {
+                                    
+                         <form class="ml-2" asp-controller="Animal" asp-action="RemoveCharacteristic"
+                          asp-route-id="@Model.Id" asp-route-model="@c.Id" method="post">
+                                        <input class="btn btn-danger"style="margin-bottom:12px" type="submit" value="Remove" />
+                                        
+                                    </form>
+                                }
+                            }
 
 
+                        }
+                        <hr/>
+                        @if (this.User.Identity?.IsAuthenticated ?? false)
+
+                        {
+                            @if (isVolunteer && isVolunteerTheCareTaker)
+                            {
+
+                                <a class="btn btn-warning" asp-controller="Animal" asp-action="AddCharacteristic"
+                       asp-route-id="@Model.Id">Add</a>
+                            }
                         }
                     </div>
                 </div>

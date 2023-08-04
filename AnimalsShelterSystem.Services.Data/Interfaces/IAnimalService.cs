@@ -35,5 +35,7 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
         Task AddAnimalCharactericticByIdAsync(string animalId, AnimalAddCharacteristicViewModel model);
 
         Task<StatisticsServiceModel> GetStatisticsAsync();
+
+        Task RemoveAnimalCharactericticByIdAsync(int id, string animalId);
     }
 }

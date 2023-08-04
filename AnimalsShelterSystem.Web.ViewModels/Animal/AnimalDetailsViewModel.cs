@@ -1,4 +1,5 @@
 ﻿
+using AnimalsShelterSystem.Web.ViewModels.Characteristic;
 using AnimalsShelterSystem.Web.ViewModels.Volunteeer;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
@@ -21,6 +22,6 @@ namespace AnimalsShelterSystem.Web.ViewModels.Animal
         public bool IsAdopted { get; set; }
 
         public VolunteerInfoOnAnimalViewModel VolunteerInfo { get; set; } = null!;
-        public IEnumerable<string> Characteristics { get; set; } = new HashSet<string>();
+        public IEnumerable<CharacteristicViewModel> Characteristics { get; set; } = new HashSet<CharacteristicViewModel>();
     }
 }
