@@ -1,0 +1,16 @@
+﻿﻿@using AnimalsShelterSystem.Web.Infrastructure.Extensitions
+@model IEnumerable<CharacteristicViewModel>
+
+@{
+    ViewData["Title"] = "All Characteristics";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+<div class="list-group">
+    @foreach (var ch in Model)
+    {
+        <a class="list-group-item list-group-item-action" asp-controller="Characteristic" asp-action="Details" asp-route-id="@ch.Id" asp-route-information="@ch.GetUrlInformation()">@ch.Name</a>
+    }
+</div>

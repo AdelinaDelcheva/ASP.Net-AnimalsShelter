@@ -8,7 +8,12 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
     {
         Task<IEnumerable<CharacteristicAddViewModel>> AllCharacteristicsAsync();
 
+        Task<IEnumerable<CharacteristicViewModel>> GetAllCharacteristicsAsync();
+
         Task<bool> ExistsByIdAsync(int id);
+
+        Task<CharacteristicDetailsModel> GetDetailsByIdAsync(int id);
+
 
     }
 }

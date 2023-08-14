@@ -36,5 +36,29 @@ namespace AnimalsShelterSystem.Services.Data
         {
             return await dbContext.Characteristics.AnyAsync(b => b.Id == id);
         }
+
+        public async Task<IEnumerable<CharacteristicViewModel>> GetAllCharacteristicsAsync()
+        {
+            IEnumerable<CharacteristicViewModel> allCharacteristics = await this.dbContext
+                .Characteristics
+                .AsNoTracking()
+                .Select(b => new CharacteristicViewModel()
+                {
+                    Id = b.Id,
+                    Name = b.Name
+                })
+                .ToArrayAsync();
+
+            return allCharacteristics;
+        }
+
+        public async  Task<CharacteristicDetailsModel> GetDetailsByIdAsync(int id)
+        {
+           return await this.dbContext.Characteristics.Select(c=>new CharacteristicDetailsModel()
+           { 
+               Id = c.Id,
+               Name = c.Name
+           }).FirstAsync(c=>c.Id==id);
+        }
     }
 }
