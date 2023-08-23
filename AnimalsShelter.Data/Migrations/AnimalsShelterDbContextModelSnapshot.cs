@@ -73,7 +73,7 @@ namespace AnimalsShelterSystem.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8f825a9c-4628-49d1-a3fd-ed5b9e3c0b9b"),
+                            Id = new Guid("f4f31387-ae8f-4074-9c03-7d2db7bad385"),
                             Age = 2,
                             AnimalAdopterId = new Guid("a9bb84c2-3c92-4463-8d8b-fe7712553255"),
                             AnimalCareVolunteerId = new Guid("9c92331f-7bad-456f-871d-088b8b0df5fb"),
@@ -85,7 +85,7 @@ namespace AnimalsShelterSystem.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5c4b86e9-57eb-4d3b-8108-89c7ae7b5f1a"),
+                            Id = new Guid("870efe2d-09af-4e24-a10d-f1ebda4a7323"),
                             Age = 4,
                             AnimalCareVolunteerId = new Guid("9c92331f-7bad-456f-871d-088b8b0df5fb"),
                             BreedId = 2,
@@ -240,6 +240,22 @@ namespace AnimalsShelterSystem.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cares", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CareTypes = 1,
+                            Description = "Great meal for special pet! Delicious food will make happy one of our pets, thank you!",
+                            Price = 5.15m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CareTypes = 3,
+                            Description = "Take for a walk one of our fantastic pets. They are friendly and playful, waiting you to spend more special time!",
+                            Price = 1m
+                        });
                 });
 
             modelBuilder.Entity("AnimalsShelterSystem.Data.Models.Characteristic", b =>
@@ -303,11 +319,45 @@ namespace AnimalsShelterSystem.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("CreatorId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("StreetAddress")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ZipCode")
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.HasKey("Id");
 

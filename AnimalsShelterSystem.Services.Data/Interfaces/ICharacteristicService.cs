@@ -14,6 +14,8 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
 
         Task<CharacteristicDetailsModel> GetDetailsByIdAsync(int id);
 
+        Task<bool> AlreadyAddedByIdAsync(int id,string animalId);
+
 
     }
 }

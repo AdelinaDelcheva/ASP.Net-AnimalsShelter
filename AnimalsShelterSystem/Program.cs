@@ -11,6 +11,10 @@ namespace AnimalsShelterSystem.Web
     using AnimalsShelterSystem.Web.Infrastructure.ModelBinders;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
+    using AnimalsShelterSystem.Web.Infrastructure.Services.Interfaces;
+    using AnimalsShelterSystem.Web.Infrastructure.Services;
+   
+    using Ganss.Xss;
 
     public class Program
     {
@@ -38,10 +42,26 @@ namespace AnimalsShelterSystem.Web
                     builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
             })
                   .AddEntityFrameworkStores<AnimalsShelterDbContext>();
-            builder.Services.AddAppService(typeof(IAnimalService));
+			
+			builder.Services.AddHttpContextAccessor();
+			builder.Services.AddDistributedMemoryCache();
+			builder.Services.AddSession(options =>
+			{
+				options.IdleTimeout = TimeSpan.FromMinutes(30);
+				options.Cookie.HttpOnly = true;
+				options.Cookie.IsEssential = true;
+			});
+
+            builder.Services.AddSession();
+
+           
 
 
-            builder.Services
+			builder.Services.AddAppService(typeof(IAnimalService));
+            builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
+            builder.Services.AddScoped<IHtmlSanitizer, HtmlSanitizer>();
+
+			builder.Services
                 .AddControllersWithViews()
                 .AddMvcOptions(opt =>
                 {
@@ -70,6 +90,7 @@ namespace AnimalsShelterSystem.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
 
             //app.MapControllerRoute(
             //    name: "default",

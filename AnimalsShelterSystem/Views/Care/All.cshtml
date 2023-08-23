@@ -1,0 +1,72 @@
+﻿@model IEnumerable<AnimalForShoppingCartViewModel>;
+@{
+    ViewData["Title"] = "Animals Care";
+    
+}
+<link rel="stylesheet" href="~/css/care-details.css" />
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+@foreach(var a in Model)
+{
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <img class="card-img-top" style="height: 400px; width: 100%" src="@a.ImageUrl" alt="Animal Image">
+            <div class="card-body text-center">
+                <a asp-area="" asp-controller="Animal" asp-action="Details" asp-route-id="@a.Id" style="font-size:26px;font-weight:bold;">@a.Name</a>
+                <h6>Breed: <b>@a.Breed</b></h6>
+                <h6>Age: <b>@a.Age</b></h6>
+
+                
+                <hr />
+                
+              
+                <div class="card" style="border:none;">
+                @if (a.AllCares.Any())
+                {
+                        <h4 style="padding-bottom:12px"><b>Cares</b></h4>
+                    foreach(var care in a.AllCares)
+                    {
+                            @*<a asp-area="" asp-controller="Care" asp-action="Details" asp-route-id="@care.Id" style="font-size:18px;font-weight:bold;color:#198754">@care.Name</a>
+                        <h6>@care.Price</h6>
+                          <a asp-controller="Animal" asp-action="Details" asp-route-id="@a.Id"
+               class="btn btn-success" style="margin-bottom:12px">Buy</a>*@
+
+                            <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                                <div class="mr-1"></div>
+                                <div class="d-flex flex-column align-items-center product-details">
+                                    <a asp-area="" asp-controller="Care" asp-action="Details" asp-route-id="@care.Id" style="font-size:1.25rem;font-weight:bold;color:#198754">@care.Name</a>
+                                    <div class="d-flex flex-row product-desc" style="gap:8px">
+                                        
+                                    </div>
+                                </div>
+
+                                
+                                <div>
+                                    <h5 class="text-grey" style="margin:0">@(care.Price.ToString("f2")+" $")</h5>
+                                </div>
+
+                               
+                                <div class="d-flex align-items-center">
+                                    <a class="btn p-0 m-0 col-1 buy-button" careId="@care.Id" productId="@a.Id"><i class="bi bi-cart-plus"></i></a>
+
+                                </div>
+                            </div>
+                    }
+                   
+                }
+                </div>
+
+              
+            </div>
+        </div>
+    </div>
+
+   
+}
+@section Scripts {
+
+    <script src="~/js/addToCart.js"></script>
+
+
+}

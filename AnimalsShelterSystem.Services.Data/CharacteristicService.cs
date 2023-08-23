@@ -32,6 +32,11 @@ namespace AnimalsShelterSystem.Services.Data
             return allCharacteristics;
         }
 
+        public async Task<bool> AlreadyAddedByIdAsync(int id,string animalId)
+        {
+            return await dbContext.AnimalsCharacteristics.AnyAsync(ac=>ac.AnimalId.ToString()==animalId && ac.CharacteristicId==id);
+        }
+
         public async Task<bool> ExistsByIdAsync(int id)
         {
             return await dbContext.Characteristics.AnyAsync(b => b.Id == id);
@@ -60,5 +65,7 @@ namespace AnimalsShelterSystem.Services.Data
                Name = c.Name
            }).FirstAsync(c=>c.Id==id);
         }
+
+
     }
 }

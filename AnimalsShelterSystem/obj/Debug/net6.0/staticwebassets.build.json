@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Pyq+V1Z6mvGSizbA4s1WFbcRMIUIEu69W0fcSG/uMF4=",
+  "Hash": "ojLBrpHcC+gltW/npdsdn3XapJgwoXPq2aABbRYytFI=",
   "Source": "AnimalsShelterSystem.Web",
   "BasePath": "_content/AnimalsShelterSystem.Web",
   "Mode": "Default",
@@ -1071,6 +1071,40 @@
       "OriginalItemSpec": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\AnimalsShelterSystem.Web.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\card-design.css",
+      "SourceId": "AnimalsShelterSystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\",
+      "BasePath": "_content/AnimalsShelterSystem.Web",
+      "RelativePath": "css/card-design.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\card-design.css"
+    },
+    {
+      "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\care-details.css",
+      "SourceId": "AnimalsShelterSystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\",
+      "BasePath": "_content/AnimalsShelterSystem.Web",
+      "RelativePath": "css/care-details.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\care-details.css"
+    },
+    {
       "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\Error.css",
       "SourceId": "AnimalsShelterSystem.Web",
       "SourceType": "Discovered",
@@ -1086,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Error.css"
+    },
+    {
+      "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\shoppingCart.css",
+      "SourceId": "AnimalsShelterSystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\",
+      "BasePath": "_content/AnimalsShelterSystem.Web",
+      "RelativePath": "css/shoppingCart.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\shoppingCart.css"
     },
     {
       "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\site.css",
@@ -1122,6 +1173,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\js\\addToCart.js",
+      "SourceId": "AnimalsShelterSystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\",
+      "BasePath": "_content/AnimalsShelterSystem.Web",
+      "RelativePath": "js/addToCart.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\addToCart.js"
+    },
+    {
       "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\js\\jquery-override.js",
       "SourceId": "AnimalsShelterSystem.Web",
       "SourceType": "Discovered",
@@ -1137,6 +1205,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\jquery-override.js"
+    },
+    {
+      "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\js\\shoppingCartEvents.js",
+      "SourceId": "AnimalsShelterSystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\",
+      "BasePath": "_content/AnimalsShelterSystem.Web",
+      "RelativePath": "js/shoppingCartEvents.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\shoppingCartEvents.js"
     },
     {
       "Identity": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\js\\site.js",

@@ -1,0 +1,210 @@
+﻿@model ShoppingCartViewModel
+
+@{
+	ViewData["Title"] = "Shopping cart";
+}
+
+<link rel="stylesheet" href="~/css/shoppingCart.css" />
+
+<form method="post">
+	
+@*
+
+	
+
+	<h1 class="mb-4">Shopping Cart</h1>
+
+
+	<div class="row w-auto ms-0 me-0 ps-0 pe-0 cart-items">
+		<table class="table shadow-lg bg-transparent full-cart @(Model.Items.Any() ? "d-block" : "d-none")">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Product</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>Total</th>
+					<th></th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+
+				@for (int i = 0; i < Model.Items.Count; i++)
+				{
+
+					<tr id="product@(Model.Items[i].Id)">
+						
+						<td>@Model.Items[i].Name</td>
+						<td>
+							<div class="flex-md-row d-md-flex">
+								<input hidden asp-for="Items[i].Id" value="@Model.Items[i].Id" />
+								<input hidden asp-for="Items[i].Price" value="@Model.Items[i].Price" />
+								<input hidden asp-for="Items[i].Name" value="@Model.Items[i].Name" />
+								
+								<input hidden asp-for="Items[i].Quantity" size="1" class="product-quantity-hidden" productId="@Model.Items[i].Id" value="@Model.Items[i].Quantity">
+								
+
+							</div>
+						</td>
+						<td>
+							<div>
+								<a class="btn p-1 minus-button" @(Model.Items[i].Quantity == 1 ? "disabled" : "") productId="@Model.Items[i].Id"><i class="fa-solid fa-minus"></i></a>
+								<span class=" p-1 product-quantity" productId="@Model.Items[i].Id">@Model.Items[i].Quantity</span>
+								<a class="btn p-1 plus-button me-auto" productId="@Model.Items[i].Id"><i class="fa-solid fa-plus"></i></a>
+							</div>
+
+						</td>
+						<td class="col-lg-1 col-3 align-middle">
+
+							<div class="flex-md-row d-md-flex">
+								<span class="d-block d-md-none">Total: </span>
+								<span class="product-total" productId=@Model.Items[i].Id>@((Model.Items[i].Price * Model.Items[i].Quantity).ToString("f2")) </span>
+
+							</div>
+						</td>
+						<td class="col-lg-1 col-1 me-auto">
+							<a class="btn p-0 m-0 col-1 delete-button" productId="@Model.Items[i].Id"><i class="fa-solid fa-trash"></i></a>
+						</td>
+					</tr>
+
+				}
+
+
+			</tbody>
+
+		</table>
+
+		<table class="empty-cart table shadow-lg bg-transparent @(Model.Items.Any() ? "d-none" : "d-block")">
+			<tbody>
+				<tr>
+					<td>
+						<p>There are no items in your shopping cart.</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+
+	<div class="row checkout-panel @(Model.Items.Any() ? "d-block" : "d-none")">
+		<div class="card shadow-lg bg-transparent ">
+			<div class="card-body">
+			
+
+				<div class="d-flex flex-row mb-3 justify-content-center">
+					<span class="p-2">Items:</span>
+					<span class="p-2 ps-1" id="total-items">@Model.TotalItems</span>
+				</div>
+
+
+				<div class="d-flex flex-row mb-3 justify-content-center">
+					<h4 class="p-2">Total:</h4>
+					<h4 class="p-2" id="total">@Model.Total</h4>
+
+					
+					<h4 class="p-2 ps-0">@Model.Currency</h4>
+				</div>
+
+				<div class="d-flex flex-row mb-3">
+					<button asp-controller="Orders" asp-action="ShoppingCart" type="submit" class="btn btn-primary w-100">Checkout</button>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+*@
+
+	<div id="shoppingCart" class="container mt-5 mb-5">
+		<div class="d-flex justify-content-center row">
+			<div class="col-md-8">
+				<div class="p-2" style="display:flex;justify-content:space-between;align-items:center">
+					<h4>Shopping cart</h4>
+
+					<div>
+						<span class="p-2">Items:</span>
+						<span class="p-2 ps-1" id="total-items">@Model.TotalItems</span>
+					</div>
+						
+					
+
+				</div>
+				@for (int i = 0; i < Model.Items.Count; i++)
+				{
+					<input hidden asp-for="Items[i].Id" value="@Model.Items[i].Id" />
+					<input hidden asp-for="Items[i].Price" value="@Model.Items[i].Price" />
+					<input hidden asp-for="Items[i].Name" value="@Model.Items[i].Name" />
+					<input hidden asp-for="Items[i].Age" value="@Model.Items[i].Age" />
+					<input hidden asp-for="Items[i].Breed" value="@Model.Items[i].Breed" />
+					<input hidden asp-for="Items[i].Image" value="@Model.Items[i].Image" />
+					<input hidden asp-for="Items[i].CareId" value="@Model.Items[i].CareId" />
+					<input hidden asp-for="Items[i].CareName" value="@Model.Items[i].CareName" />
+					<input hidden asp-for="Items[i].Quantity" size="1" class="product-quantity-hidden" productId="@Model.Items[i].Id" careId="@Model.Items[i].CareId"value="@Model.Items[i].Quantity">
+				
+					<div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded" >
+						<div class="mr-1"><img class="rounded" src="@Model.Items[i].Image" width="70"></div>
+					<div class="d-flex flex-column align-items-center product-details">
+							<span class="font-weight-bold">@Model.Items[i].Name</span>
+						<div class="d-flex flex-row product-desc" style="gap:8px">
+								<div class="size mr-1"><span class="text-grey">Breed:</span><span class="font-weight-bold">&nbsp;@Model.Items[i].Breed</span></div>
+								<div class="color"><span class="text-grey">Age:</span><span class="font-weight-bold">&nbsp;@Model.Items[i].Age</span></div>
+						</div>
+					</div>
+						<div class="d-flex flex-column align-items-center product-details">
+							<span class="font-weight-bold">@Model.Items[i].CareName</span>
+							
+						</div>
+					<div class="d-flex flex-row align-items-center qty">
+							<a class="btn p-1 minus-button" @(Model.Items[i].Quantity == 1 ? "disabled" : "") careId="@Model.Items[i].CareId" productId="@Model.Items[i].Id"><i class="fa-solid fa-minus"></i></a>
+							<span class=" p-1 product-quantity" careId="@Model.Items[i].CareId" productId="@Model.Items[i].Id">@Model.Items[i].Quantity</span>
+							<a class="btn p-1 plus-button me-auto" careId="@Model.Items[i].CareId" productId="@Model.Items[i].Id"><i class="fa-solid fa-plus"></i></a>
+					</div>
+					<div>
+						<h5 class="text-grey" style="margin:0">@Model.Items[i].Price.ToString("f2")</h5>
+					</div>
+
+						<div>
+							<span class="d-block d-md-none">Total: </span>
+							<span class="product-total" careId="@Model.Items[i].CareId" productId=@Model.Items[i].Id>@((Model.Items[i].Price * Model.Items[i].Quantity).ToString("f2")) </span>
+
+						</div>
+					<div class="d-flex align-items-center">
+							<a class="btn p-0 m-0 col-1 delete-button" careId="@Model.Items[i].CareId" productId="@Model.Items[i].Id"><i class="fa-solid fa-trash"></i></a>
+
+					</div>
+				</div>
+
+				}
+
+				
+				<input hidden asp-for="Total" value="@Model.Total" />
+				<input hidden asp-for="TotalItems" value="@Model.TotalItems" />
+
+				<div class="@(Model.Items.Any() ? "d-flex justify-content-end" : "d-none")">
+					<h4 class="p-2">Total:</h4>
+					<h4 class="p-2" id="total">@Model.Total.ToString("f2")</h4>
+					<h4 class="p-2 ps-0">$</h4>
+				</div>
+				<div class="@(Model.Items.Any() ? "d-flex flex-row align-items-center mt-3 p-2 bg-white rounded " : "d-none")">
+					<button asp-controller="Orders" asp-action="ShoppingCart" type="submit" class="btn btn-warning btn-block btn-lg ml-2 pay-button"  style="width:100%">
+						Proceed to Pay
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</form>
+
+
+
+
+@section Scripts{
+	<script src="~/js/shoppingCartEvents.js"></script>
+}

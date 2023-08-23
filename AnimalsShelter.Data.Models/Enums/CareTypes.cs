@@ -8,7 +8,7 @@ namespace AnimalsShelterSystem.Data.Models.Enums
 {
     public enum CareTypes
     {
-        Adopting=1,
+        Feeding=1,
         Grooming=2,
         Walking=3,
         NailCutting=4,

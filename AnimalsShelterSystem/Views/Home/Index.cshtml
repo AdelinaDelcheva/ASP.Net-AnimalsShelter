@@ -35,7 +35,7 @@
 
 <div class="mb-5"></div>
 
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+@*<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         @for (int i = 0; i < animals.Count(); i++)
         {
@@ -60,7 +60,45 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
+</div>*@
+
+<div class="row" style="justify-content:center;height:50%">
+
+
+    <div id="carousel" class="shadow-lg p-0 m-0 carousel slide col-12 col-lg-7" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @for (int i = 0; i < animals.Count(); i++)
+            {
+                <div class="carousel-item @(i == 0 ? "active" : "")">
+
+
+                    <a asp-area="" asp-controller="Animal" asp-action="Details" asp-route-id="@animals[i].Id">
+                        <img src="@animals[i].ImageUrl" class="d-block w-100" style="height:600px;overflow:hidden;">
+                        <div class="carousel-caption d-none d-md-block ms-auto me-auto">
+                            <h3 class="text-light opacity-100" style="text-shadow:2px 2px 4px #000000">@animals[i].Name</h3>
+                        </div>
+                    </a>
+
+
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+   
+
+
+
 </div>
+
 <div class="mb-5"></div>
 
 <div class="row">

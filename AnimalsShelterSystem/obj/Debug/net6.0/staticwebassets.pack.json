@@ -9,6 +9,18 @@
       "PackagePath": "staticwebassets\\css\\Error.css"
     },
     {
+      "Id": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\card-design.css",
+      "PackagePath": "staticwebassets\\css\\card-design.css"
+    },
+    {
+      "Id": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\care-details.css",
+      "PackagePath": "staticwebassets\\css\\care-details.css"
+    },
+    {
+      "Id": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\shoppingCart.css",
+      "PackagePath": "staticwebassets\\css\\shoppingCart.css"
+    },
+    {
       "Id": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -17,8 +29,16 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\js\\addToCart.js",
+      "PackagePath": "staticwebassets\\js\\addToCart.js"
+    },
+    {
       "Id": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\js\\jquery-override.js",
       "PackagePath": "staticwebassets\\js\\jquery-override.js"
+    },
+    {
+      "Id": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\js\\shoppingCartEvents.js",
+      "PackagePath": "staticwebassets\\js\\shoppingCartEvents.js"
     },
     {
       "Id": "C:\\Users\\1\\Desktop\\AnimalsShelterSystem-CourseProject\\AnimalsShelterSystem\\wwwroot\\js\\site.js",

@@ -1,0 +1,88 @@
+﻿@model CheckoutFormViewModel
+
+@{
+	ViewData["Title"] = "Paying";
+}
+
+
+
+<form method="post" asp-controller="Orders" asp-action="Checkout">
+	<ul hidden>
+		@for (int i = 0; i < Model.Items.Count; i++)
+		{
+			<li>
+				<input asp-for="Items[i].Id" value="@Model.Items[i].Id" />
+				<input asp-for="Items[i].CareId" value="@Model.Items[i].CareId" />
+				<input asp-for="Items[i].Price" value="@Model.Items[i].Price" />
+				<input asp-for="Items[i].Quantity" value="@Model.Items[i].Quantity" />
+			</li>
+		}
+	</ul>
+
+
+
+	
+		@if (User?.Identity?.IsAuthenticated ?? false)
+		{
+			<div class="container-fluid">
+			<div class="flex-column" style="display:flex;align-items:center;justify-content:center">
+					<div class="col-6 col-md-4 mb-3">
+					<label asp-for="FirstName">First Name</label>
+					<input asp-for="FirstName" class="form-control">
+					<span asp-validation-for="FirstName" class="small text-danger"></span>
+
+					<label asp-for="LastName">Last Name</label>
+					<input asp-for="LastName" class="form-control">
+					<span asp-validation-for="LastName" class="small text-danger"></span>
+
+					<label asp-for="Phone">Phone Number</label>
+					<input asp-for="Phone" class="form-control">
+					<span asp-validation-for="Phone" class="small text-danger"></span>
+
+
+
+					<label asp-for="Country"></label>
+					<input asp-for="Country" class="form-control">
+					<span asp-validation-for="Country" class="small text-danger"></span>
+
+
+
+					<label asp-for="ZipCode">Zip Code</label>
+					<input asp-for="ZipCode" class="form-control">
+					<span asp-validation-for="ZipCode" class="small text-danger"></span>
+
+					<label asp-for="City"></label>
+					<input asp-for="City" class="form-control">
+					<span asp-validation-for="City" class="small text-danger"></span>
+
+					<label asp-for="StreetAddress">Street Address</label>
+					<input asp-for="StreetAddress" class="form-control">
+					<span asp-validation-for="StreetAddress" class="small text-danger"></span>
+
+					@*<label asp-for="Email">Email</label>
+					<input class="form-control" disabled asp-for="Email" value="@User.Identity.Name" />
+					<span asp-validation-for="Email"></span>*@
+					</div>
+
+
+				<button  type="submit" class="btn btn-primary col-6 col-md-4 mb-3" >Checkout</button>
+				
+				</div>
+
+				
+
+			</div>
+		}
+
+
+		
+	
+
+</form>
+
+
+
+@section Scripts{
+	
+	<partial name="_ValidationScriptsPartial" />
+}

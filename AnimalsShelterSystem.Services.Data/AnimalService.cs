@@ -15,6 +15,8 @@ namespace AnimalsShelterSystem.Services.Data
     using AnimalsShelterSystem.Web.ViewModels.Home;
     using AnimalsShelterSystem.Services.Data.Models.Statistics;
     using AnimalsShelterSystem.Web.ViewModels.Characteristic;
+    using AnimalsShelterSystem.Services.Data.Models.ShoppingCart;
+    using System.Security;
 
     public class AnimalService : IAnimalService
     {
@@ -166,7 +168,14 @@ namespace AnimalsShelterSystem.Services.Data
                     Characteristics=a.Characteristics.Select(c=>new CharacteristicViewModel(){
                         Id=c.Characteristic.Id,
                         Name=c.Characteristic.Name
-                    }).ToList()
+                    }).ToList(),
+                    Reviews=a.Reviews.Select(r=>new Web.ViewModels.Review.ReviewViewModel()
+                    {
+                        Id=r.Id,
+                        Text=r.Text,
+                        CreatedOn=r.LastModified.ToString("yyyy-MM-dd H:mm"),
+                        Creator=r.Creator.UserName
+                    })
                     
                 }).FirstOrDefaultAsync();
 
@@ -319,6 +328,46 @@ namespace AnimalsShelterSystem.Services.Data
                 this.dbContext.AnimalsCharacteristics.Remove(curent);
                 await this.dbContext.SaveChangesAsync();
             }
+        }
+
+		public async Task<IList<ProductForCartDto>> GetProductsForCart(IList<ShoppingCartItem> cartItems)
+		{
+            
+            IList<ProductForCartDto> result=new List<ProductForCartDto>();
+            foreach(var item in cartItems)
+            {
+                var curent = await dbContext
+                    
+                    .Animals
+                    .Where(a => a.Id.ToString() == item.Id && !a.IsDeleted)
+                    .Select(a=> new ProductForCartDto()
+					{
+						Id = a.Id.ToString(),
+						Name = a.Name,
+						Image = a.ImageUrl,
+						Breed = a.Breed.Breed,
+						Age = a.Age,
+						CareId = item.CareId,
+
+
+					})
+                    .FirstOrDefaultAsync();
+                if (curent!=null)
+                {
+					var currenCare = await dbContext.Cares.FirstAsync(c => c.Id == curent.CareId);
+					curent.CareName = currenCare.CareTypes.ToString();
+					curent.Price = currenCare.Price;
+
+					result.Add(curent);
+
+                }
+            }
+            
+           
+           
+            
+
+            return result;
         }
     }
 }

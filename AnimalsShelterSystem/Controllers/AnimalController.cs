@@ -50,8 +50,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             if (!isVolunteer)
             {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
-                return this.RedirectToAction("Become", "Volunteer");
+                return this.NoVolunteerExistsById();
             }
             try
             {
@@ -74,8 +73,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             if (!isVolunteer)
             {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
-                return this.RedirectToAction("Become", "Volunteer");
+                return this.NoVolunteerExistsById();
             }
 
 
@@ -153,8 +151,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             AnimalDetailsViewModel? model=await this.animalService.GetDetailsByIdAsync(id);
             if(model==null)
             {
-                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
-                return RedirectToAction("All", "Animal");
+                return this.NoAnimalExistsById();
             }
             return View(model);
             
@@ -166,16 +163,14 @@ namespace AnimalsShelterSystem.Web.Controllers
                 .ExistsByIdAsync(id);
             if (!animalExists)
             {
-                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
-                return RedirectToAction("All", "Animal");
+                return this.NoAnimalExistsById();
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
             if (!isVolunteer)
             {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
-                return this.RedirectToAction("Become", "Volunteer");
+                return this.NoVolunteerExistsById();
             }
 
             string? volunteerId =
@@ -187,9 +182,7 @@ namespace AnimalsShelterSystem.Web.Controllers
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
             if (!isVolunteerCaretaker)
             {
-                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
-
-                return this.RedirectToAction("Mine", "Animal");
+                return this.VolunteerIsNotCareTaker();
             }
 
             try
@@ -202,7 +195,8 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
             catch (Exception)
             {
-                return this.GeneralError();
+
+                return  this.GeneralError();
             }
         }
         [HttpPost]
@@ -220,17 +214,14 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             if (!animalExists)
             {
-                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
-
-                return this.RedirectToAction("All", "Animal");
+                return this.NoAnimalExistsById();
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
             if (!isVolunteer)
             {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to edit the animal!";
-                return this.RedirectToAction("Become", "Volunteer");
+                return this.NoVolunteerExistsById();
             }
 
             string? volunteerId =
@@ -242,9 +233,7 @@ namespace AnimalsShelterSystem.Web.Controllers
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
             if (!isVolunteerCaretaker)
             {
-                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
-
-                return this.RedirectToAction("Mine", "Animal");
+                return this.VolunteerIsNotCareTaker();
             }
 
             try
@@ -272,17 +261,14 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             if (!animalExists)
             {
-                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
-
-                return this.RedirectToAction("All", "Animal");
+                return this.NoAnimalExistsById();
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
             if (!isVolunteer)
             {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
-                return this.RedirectToAction("Become", "Volunteer");
+                return this.NoVolunteerExistsById();
             }
 
             string? volunteerId =
@@ -294,10 +280,9 @@ namespace AnimalsShelterSystem.Web.Controllers
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
             if (!isVolunteerCaretaker)
             {
-                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
-
-                return this.RedirectToAction("Mine", "Animal");
+                return this.VolunteerIsNotCareTaker();
             }
+
 
             try
             {
@@ -320,17 +305,16 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             if (!animalExists)
             {
-                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
 
-                return this.RedirectToAction("All", "Animal");
+                return this.NoAnimalExistsById();
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
             if (!isVolunteer)
             {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
-                return this.RedirectToAction("Become", "Volunteer");
+
+                return this.NoVolunteerExistsById();
             }
 
             string? volunteerId =
@@ -342,9 +326,9 @@ namespace AnimalsShelterSystem.Web.Controllers
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
             if (!isVolunteerCaretaker)
             {
-                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
 
-                return this.RedirectToAction("Mine", "Animal");
+
+                return this.VolunteerIsNotCareTaker();
             }
 
             try
@@ -361,188 +345,195 @@ namespace AnimalsShelterSystem.Web.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> AddCharacteristic(string id)
-        {
-            bool animalExists = await this.animalService
-                .ExistsByIdAsync(id);
-            if (!animalExists)
-            {
-                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
-                return RedirectToAction("All", "Animal");
-            }
+        //[HttpGet]
+        //public async Task<IActionResult> AddCharacteristic(string id)
+        //{
+        //    bool animalExists = await this.animalService
+        //        .ExistsByIdAsync(id);
+        //    if (!animalExists)
+        //    {
+        //        this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+        //        return RedirectToAction("All", "Animal");
+        //    }
 
-            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
-            if (!isVolunteer)
-            {
+        //    bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+        //    if (!isVolunteer)
+        //    {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal characteristic!";
-                return this.RedirectToAction("Become", "Volunteer");
-            }
-            string? volunteerId =
-                   await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
+        //        this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal characteristic!";
+        //        return this.RedirectToAction("Become", "Volunteer");
+        //    }
+        //    string? volunteerId =
+        //           await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
 
 
 
-            bool isVolunteerCaretaker = await this.animalService
-                .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
-            if (!isVolunteerCaretaker)
-            {
-                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
+        //    bool isVolunteerCaretaker = await this.animalService
+        //        .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
+        //    if (!isVolunteerCaretaker)
+        //    {
+        //        this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
 
-                return this.RedirectToAction("Mine", "Animal");
-            }
+        //        return this.RedirectToAction("Mine", "Animal");
+        //    }
 
-            try
-            {
-                AnimalAddCharacteristicViewModel formModel = await this.animalService.GetCharacteristicByIdAsync(id);
+        //    try
+        //    {
+        //        AnimalAddCharacteristicViewModel formModel = await this.animalService.GetCharacteristicByIdAsync(id);
               
-                    formModel.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
-                    return this.View(formModel);
+        //            formModel.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
+        //            return this.View(formModel);
                 
 
                
-            }
-            catch (Exception)
-            {
-                return this.GeneralError();
-            }
-        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return this.GeneralError();
+        //    }
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> AddCharacteristic(string id, AnimalAddCharacteristicViewModel model)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                var errors = ModelState.Select(m => m.Value.Errors).Where(c => c.Count > 0).ToList();
-                model.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
+        //[HttpPost]
+        //public async Task<IActionResult> AddCharacteristic(string id, AnimalAddCharacteristicViewModel model)
+        //{
+        //    if (!this.ModelState.IsValid)
+        //    {
+                
 
-                return NotFound();
-            }
+        //        return NotFound();
+        //    }
 
-            bool animalExists = await this.animalService
-                .ExistsByIdAsync(id);
+        //    bool animalExists = await this.animalService
+        //        .ExistsByIdAsync(id);
 
-            if (!animalExists)
-            {
-                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+        //    if (!animalExists)
+        //    {
+        //        this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
 
-                return this.RedirectToAction("All", "Animal");
-            }
+        //        return this.RedirectToAction("All", "Animal");
+        //    }
 
-            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
-            if (!isVolunteer)
-            {
+        //    bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+        //    if (!isVolunteer)
+        //    {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to edit the animal!";
-                return this.RedirectToAction("Become", "Volunteer");
-            }
+        //        this.TempData[ErrorMessage] = "You must be a volunteer in order to edit the animal!";
+        //        return this.RedirectToAction("Become", "Volunteer");
+        //    }
 
-            string? volunteerId =
-                    await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
-
+        //    string? volunteerId =
+        //            await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
 
 
-            bool isVolunteerCaretaker = await this.animalService
-                .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
-            if (!isVolunteerCaretaker)
-            {
-                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
 
-                return this.RedirectToAction("Mine", "Animal");
-            }
-            bool isCharactExist = await this.characteristicService.ExistsByIdAsync(model.CharacteristicId);
-            if(!isCharactExist)
-            {
-                this.TempData[ErrorMessage] = "The category ID does not exist";
+        //    bool isVolunteerCaretaker = await this.animalService
+        //        .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
+        //    if (!isVolunteerCaretaker)
+        //    {
+        //        this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
 
-                return this.RedirectToAction("Details", "Animal", new { id });
-            }
-            try
-            {
-                await this.animalService.AddAnimalCharactericticByIdAsync(id, model);
-            }
-            catch (Exception)
-            {
-                this.ModelState.AddModelError(string.Empty,
-                    "Unexpected error occurred while trying to update the animal. Please try again later or contact administrator!");
-                model.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
+        //        return this.RedirectToAction("Mine", "Animal");
+        //    }
+        //    bool isCharactExist = await this.characteristicService.ExistsByIdAsync(model.CharacteristicId);
+        //    if(!isCharactExist)
+        //    {
+        //        this.TempData[ErrorMessage] = "The category ID does not exist";
 
-                return this.View(model);
-            }
+        //        return this.RedirectToAction("Details", "Animal", new { id });
+        //    }
 
-            this.TempData[SuccessMessage] = "Animal characteristic was added successfully!";
-            return this.RedirectToAction("Details", "Animal", new { id });
-        }
+        //    bool isAlreadyAdded= await this.characteristicService.AlreadyAddedByIdAsync(model.CharacteristicId,id);
+        //    if (isAlreadyAdded)
+        //    {
+        //        this.TempData[ErrorMessage] = "The characteristic is already added for that animal!";
 
-        [HttpPost]
-        public async Task<IActionResult> RemoveCharacteristic(string id,int model)
-        {
+        //        return this.RedirectToAction("Details", "Animal", new { id });
+        //    }
+        //    try
+        //    {
+        //        await this.animalService.AddAnimalCharactericticByIdAsync(id, model);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        this.ModelState.AddModelError(string.Empty,
+        //            "Unexpected error occurred while trying to update the animal. Please try again later or contact administrator!");
+        //        model.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
+
+        //        return this.View(model);
+        //    }
+
+        //    this.TempData[SuccessMessage] = "Animal characteristic was added successfully!";
+        //    return this.RedirectToAction("Details", "Animal", new { id });
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> RemoveCharacteristic(string id,int model)
+        //{
            
 
 
-            if (!this.ModelState.IsValid)
-            {
+        //    if (!this.ModelState.IsValid)
+        //    {
                
                 
 
-                return NotFound();
-            }
+        //        return NotFound();
+        //    }
 
-            bool animalExists = await this.animalService
-                .ExistsByIdAsync(id);
+        //    bool animalExists = await this.animalService
+        //        .ExistsByIdAsync(id);
 
-            if (!animalExists)
-            {
-                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+        //    if (!animalExists)
+        //    {
+        //        this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
 
-                return this.RedirectToAction("All", "Animal");
-            }
+        //        return this.RedirectToAction("All", "Animal");
+        //    }
 
-            bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
-            if (!isVolunteer)
-            {
+        //    bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
+        //    if (!isVolunteer)
+        //    {
 
-                this.TempData[ErrorMessage] = "You must be a volunteer in order to edit the animal!";
-                return this.RedirectToAction("Become", "Volunteer");
-            }
+        //        this.TempData[ErrorMessage] = "You must be a volunteer in order to edit the animal!";
+        //        return this.RedirectToAction("Become", "Volunteer");
+        //    }
 
-            string? volunteerId =
-                    await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
+        //    string? volunteerId =
+        //            await this.volunteerService.GetVolunteerIdByUserIdAsync(User.GetId()!);
 
 
 
-            bool isVolunteerCaretaker = await this.animalService
-                .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
-            if (!isVolunteerCaretaker)
-            {
-                this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
+        //    bool isVolunteerCaretaker = await this.animalService
+        //        .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
+        //    if (!isVolunteerCaretaker)
+        //    {
+        //        this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
 
-                return this.RedirectToAction("Mine", "Animal");
-            }
-            bool isCharactExist = await this.characteristicService.ExistsByIdAsync(model);
-            if (!isCharactExist)
-            {
-                this.TempData[ErrorMessage] = "The category ID does not exist";
+        //        return this.RedirectToAction("Mine", "Animal");
+        //    }
+        //    bool isCharactExist = await this.characteristicService.ExistsByIdAsync(model);
+        //    if (!isCharactExist)
+        //    {
+        //        this.TempData[ErrorMessage] = "The category ID does not exist";
               
 
-                return this.RedirectToAction("Details", "Animal", new { id});
-            }
-            try
-            {
-                await this.animalService.RemoveAnimalCharactericticByIdAsync(model, id);
-            }
-            catch (Exception)
-            {
-                this.ModelState.AddModelError(string.Empty,
-                    "Unexpected error occurred while trying to update the animal. Please try again later or contact administrator!");
-                return this.RedirectToAction("Details", "Animal", new { id });
-            }
+        //        return this.RedirectToAction("Details", "Animal", new { id});
+        //    }
+        //    try
+        //    {
+        //        await this.animalService.RemoveAnimalCharactericticByIdAsync(model, id);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        this.ModelState.AddModelError(string.Empty,
+        //            "Unexpected error occurred while trying to update the animal. Please try again later or contact administrator!");
+        //        return this.RedirectToAction("Details", "Animal", new { id });
+        //    }
 
-            this.TempData[SuccessMessage] = "Animal characteristic was removed successfully!";
+        //    this.TempData[SuccessMessage] = "Animal characteristic was removed successfully!";
             
-            return this.RedirectToAction("Details", "Animal", new { id });
-        }
+        //    return this.RedirectToAction("Details", "Animal", new { id });
+        //}
 
         private IActionResult GeneralError()
         {
@@ -551,5 +542,31 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             return this.RedirectToAction("Index", "Home");
         }
+
+        private IActionResult NoAnimalExistsById()
+        {
+            
+                this.TempData[ErrorMessage] = "Animal with the provided id does not exist!";
+
+                return this.RedirectToAction("All", "Animal");
+           
+        }
+
+        private IActionResult NoVolunteerExistsById()
+        {
+
+            this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal!";
+            return this.RedirectToAction("Become", "Volunteer");
+
+        }
+
+        private IActionResult VolunteerIsNotCareTaker()
+        {
+            this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
+
+            return this.RedirectToAction("Mine", "Animal");
+        }
+
+       
     }
 }

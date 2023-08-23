@@ -1,0 +1,21 @@
+﻿@model CareDetailsViewModel
+
+@{
+    ViewData["Title"] = "Care Details";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr/>
+
+<div class="card" style="width: 30%;height:20%;">
+            <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-bookmark"></i> Care Info</h5>
+        <p class="card-text"><i class="bi bi-info-square"></i> <b>Name:</b>  @Model.Name</p>
+
+        <p class="card-text"><i class="bi bi-chat-square-heart"></i> <b>Description:</b>  @Model.Description</p>
+                
+            </div>
+        </div>
+<div>
+    <a asp-area="" asp-controller="Care" asp-action="All"><i class="bi bi-arrow-bar-left"style="font-size:2rem;font-weight:bold"></i></a>
+</div>  

@@ -54,5 +54,45 @@
             public const int PhoneNumberMinLength = 7;
             public const int PhoneNumberMaxLength = 15;
         }
-    }
+
+        public static class User
+        {
+            public const int PasswordMinLength = 6;
+            public const int PasswordMaxLength = 100;
+
+            public const int FirstNameMinLength = 1;
+            public const int FirstNameMaxLength = 15;
+
+            public const int LastNameMinLength = 1;
+            public const int LastNameMaxLength = 15;
+
+		
+		}
+
+		public static class Order
+		{
+			public const int PhoneNumberMinLength = 3;
+			public const int PhoneNumberMaxLength = 15;
+
+			public const int CityMinLength = 2;
+			public const int CityMaxLength = 40;
+
+			public const int CountryMinLength = 3;
+			public const int CountryMaxLength = 40;
+
+			public const int StreetAddressMinLength = 5;
+			public const int StreetAddressMaxLength = 100;
+
+			public const int ZipCodeMinLength = 3;
+			public const int ZipCodeMaxLength = 8;
+
+			public const int FirstNameMinLength = 1;
+			public const int FirstNameMaxLength = 15;
+
+			public const int LastNameMinLength = 1;
+			public const int LastNameMaxLength = 15;
+
+
+		}
+	}
 }

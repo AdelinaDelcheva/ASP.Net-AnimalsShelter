@@ -26,7 +26,7 @@
                  .OnDelete(DeleteBehavior.NoAction);
 
 
-            builder.HasData(this.GenerateAnimals());
+           builder.HasData(this.GenerateAnimals());
         }
 
         private Animal[] GenerateAnimals()

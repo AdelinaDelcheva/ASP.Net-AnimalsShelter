@@ -1,5 +1,6 @@
 ﻿
 using AnimalsShelterSystem.Web.ViewModels.Characteristic;
+using AnimalsShelterSystem.Web.ViewModels.Review;
 using AnimalsShelterSystem.Web.ViewModels.Volunteeer;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
@@ -23,5 +24,7 @@ namespace AnimalsShelterSystem.Web.ViewModels.Animal
 
         public VolunteerInfoOnAnimalViewModel VolunteerInfo { get; set; } = null!;
         public IEnumerable<CharacteristicViewModel> Characteristics { get; set; } = new HashSet<CharacteristicViewModel>();
+
+        public IEnumerable<ReviewViewModel> Reviews { get; set; } = new HashSet<ReviewViewModel>();
     }
 }

@@ -1,0 +1,19 @@
+﻿@model ShoppingCartViewModel
+
+@{
+	ViewData["Title"] = "Shopping cart";
+}
+
+
+<div class="container-fluid" id="cart-items">
+
+	<partial name="_ShoppingCartItems" model="@Model"></partial>
+
+</div>
+
+
+
+
+@section Scripts{
+	<script src="~/js/shoppingCartEvents.js"></script>
+}

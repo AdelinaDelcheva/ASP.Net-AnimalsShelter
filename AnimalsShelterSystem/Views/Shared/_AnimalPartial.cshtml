@@ -41,10 +41,8 @@
                 else
                 {
                    
-                    <form asp-controller="Animal" asp-action="Review"
-                         asp-route-id="@Model.Id" method="post">
-                          <input class="btn btn-primary" type="submit" value="Review" />
-                    </form>
+                   <a asp-controller="Review" asp-action="Add" asp-route-id="@Model.Id"
+               class="btn btn-warning">Review</a>
                 }
                 
             }

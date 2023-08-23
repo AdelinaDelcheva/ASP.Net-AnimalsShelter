@@ -1,0 +1,59 @@
+﻿@model IEnumerable<OrderListViewModel>
+
+@{
+	ViewData["Title"] = "My Orders";
+}
+
+<div class="container">
+	<h2>Order History</h2>
+	<div class="row" style="gap:4rem;align-items:flex-start">
+		@if(!Model.Any())
+		{
+			<table class="empty-cart table shadow-lg bg-transparent d-block">
+			<tbody>
+				<tr>
+					<td>
+						<p>There are no orders.</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		}
+		@foreach (var order in Model)
+		{
+			<div class="col-md-4" style="width:20%;padding:0; border: 1px solid rgba(0,0,0,.125);border-radius: 0.25rem;">
+				<div class="mb-3" >
+
+
+					<div class="row m-0 p-0" >
+						@foreach (var product in order.Products)
+						{
+							
+								<img class="img-fluid" src="@product.ImageId">
+							
+									<p class="card-text"><strong>Animal Name: </strong>@product.AnimalName</p>
+
+							<p class="card-text"><strong>Ordered Care: </strong><a asp-area="" asp-controller="Care" asp-action="Details" asp-route-id="@product.CareId">@product.CareName</a></p>
+
+							
+							
+
+						}
+
+					</div>
+
+
+					<div class="card-body">
+						<p class="card-text"><strong>Date: </strong>@order.Date.ToString("yyyy-MM-dd H:mm")</p>
+						<p class="card-text"><strong>Recipient: </strong>@order.FirstName @order.LastName</p>
+						<p class="card-text"><strong>Total Amount: </strong> @order.Total.ToString("f2") $</p>
+						
+						<p></p>
+					</div>
+				</div>
+			</div>
+		}
+
+
+	</div>
+</div>

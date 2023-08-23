@@ -1,6 +1,7 @@
 ﻿
 
 using AnimalsShelterSystem.Services.Data.Models.Animal;
+using AnimalsShelterSystem.Services.Data.Models.ShoppingCart;
 using AnimalsShelterSystem.Services.Data.Models.Statistics;
 using AnimalsShelterSystem.Web.ViewModels.Animal;
 using AnimalsShelterSystem.Web.ViewModels.Home;
@@ -37,5 +38,8 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
         Task<StatisticsServiceModel> GetStatisticsAsync();
 
         Task RemoveAnimalCharactericticByIdAsync(int id, string animalId);
+        Task<IList<ProductForCartDto>> GetProductsForCart(IList<ShoppingCartItem> cartItems);
+
+
     }
 }

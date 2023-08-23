@@ -24,10 +24,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Animal/AddCharacteristic.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXEFkZENoYXJhY3RlcmlzdGljLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Animal/All.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXEFsbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,6 +42,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Animal/Mine.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXE1pbmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Care/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZVxBbGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Care/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Characteristic/AddCharacteristic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcmFjdGVyaXN0aWNcQWRkQ2hhcmFjdGVyaXN0aWMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Characteristic/All.cshtml]
@@ -68,6 +76,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Orders/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEFsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Orders/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENoZWNrb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Orders/ShoppingCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXFNob3BwaW5nQ2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Review/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Shared/_AnimalFormPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbmltYWxGb3JtUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -84,8 +108,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25zUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Shared/_ShoppingCartItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaG9wcGluZ0NhcnRJdGVtcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/User/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/User/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/1/Desktop/AnimalsShelterSystem-CourseProject/AnimalsShelterSystem/Views/Volunteer/Become.cshtml]
