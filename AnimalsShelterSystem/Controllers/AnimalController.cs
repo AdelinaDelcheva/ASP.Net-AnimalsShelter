@@ -167,7 +167,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
-            if (!isVolunteer)
+            if (!isVolunteer && !User.IsAdmin())
             {
 
                 return this.NoVolunteerExistsById();
@@ -180,7 +180,7 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             bool isVolunteerCaretaker = await this.animalService
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
-            if (!isVolunteerCaretaker)
+            if (!isVolunteerCaretaker && !User.IsAdmin())
             {
                 return this.VolunteerIsNotCareTaker();
             }
@@ -218,7 +218,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
-            if (!isVolunteer)
+            if (!isVolunteer && !User.IsAdmin() )
             {
 
                 return this.NoVolunteerExistsById();
@@ -231,7 +231,7 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             bool isVolunteerCaretaker = await this.animalService
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
-            if (!isVolunteerCaretaker)
+            if (!isVolunteerCaretaker && !User.IsAdmin())
             {
                 return this.VolunteerIsNotCareTaker();
             }
@@ -265,7 +265,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
-            if (!isVolunteer)
+            if (!isVolunteer && !User.IsAdmin())
             {
 
                 return this.NoVolunteerExistsById();
@@ -278,7 +278,7 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             bool isVolunteerCaretaker = await this.animalService
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
-            if (!isVolunteerCaretaker)
+            if (!isVolunteerCaretaker && !User.IsAdmin())
             {
                 return this.VolunteerIsNotCareTaker();
             }
@@ -310,7 +310,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
-            if (!isVolunteer)
+            if (!isVolunteer && !User.IsAdmin())
             {
 
 
@@ -324,7 +324,7 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             bool isVolunteerCaretaker = await this.animalService
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
-            if (!isVolunteerCaretaker)
+            if (!isVolunteerCaretaker && !User.IsAdmin())
             {
 
 
@@ -344,6 +344,41 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Adopt(string id)
+        {
+            bool animalExists = await this.animalService
+               .ExistsByIdAsync(id);
+
+            if (!animalExists)
+            {
+
+                return this.NoAnimalExistsById();
+            }
+
+            bool isAnimalAdopted = await animalService.IsAdoptedAsync(id);
+            if (isAnimalAdopted)
+            {
+                TempData[ErrorMessage] =
+                    "Selected animal is already adopteb by another user! Please select another animal.";
+
+                return RedirectToAction("All", "Animal");
+            }
+
+          
+            try
+            {
+                await animalService.AdoptAnimalAsync(id, User.GetId()!);
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
+
+          //  this.memoryCache.Remove(RentsCacheKey);
+
+            return RedirectToAction("Mine", "Animal");
+        }
 
         //[HttpGet]
         //public async Task<IActionResult> AddCharacteristic(string id)
@@ -380,12 +415,12 @@ namespace AnimalsShelterSystem.Web.Controllers
         //    try
         //    {
         //        AnimalAddCharacteristicViewModel formModel = await this.animalService.GetCharacteristicByIdAsync(id);
-              
+
         //            formModel.AllCharacteristics = await this.characteristicService.AllCharacteristicsAsync();
         //            return this.View(formModel);
-                
 
-               
+
+
         //    }
         //    catch (Exception)
         //    {
@@ -398,7 +433,7 @@ namespace AnimalsShelterSystem.Web.Controllers
         //{
         //    if (!this.ModelState.IsValid)
         //    {
-                
+
 
         //        return NotFound();
         //    }
@@ -469,13 +504,13 @@ namespace AnimalsShelterSystem.Web.Controllers
         //[HttpPost]
         //public async Task<IActionResult> RemoveCharacteristic(string id,int model)
         //{
-           
+
 
 
         //    if (!this.ModelState.IsValid)
         //    {
-               
-                
+
+
 
         //        return NotFound();
         //    }
@@ -515,7 +550,7 @@ namespace AnimalsShelterSystem.Web.Controllers
         //    if (!isCharactExist)
         //    {
         //        this.TempData[ErrorMessage] = "The category ID does not exist";
-              
+
 
         //        return this.RedirectToAction("Details", "Animal", new { id});
         //    }
@@ -531,7 +566,7 @@ namespace AnimalsShelterSystem.Web.Controllers
         //    }
 
         //    this.TempData[SuccessMessage] = "Animal characteristic was removed successfully!";
-            
+
         //    return this.RedirectToAction("Details", "Animal", new { id });
         //}
 

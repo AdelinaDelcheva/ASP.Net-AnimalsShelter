@@ -13,8 +13,10 @@ namespace AnimalsShelterSystem.Web
     using Microsoft.Extensions.Options;
     using AnimalsShelterSystem.Web.Infrastructure.Services.Interfaces;
     using AnimalsShelterSystem.Web.Infrastructure.Services;
+    using static AnimalsShelterSystem.Common.GeneralApplicationConstants;
    
     using Ganss.Xss;
+    using Microsoft.AspNetCore.Identity;
 
     public class Program
     {
@@ -41,7 +43,8 @@ namespace AnimalsShelterSystem.Web
                 options.Password.RequiredLength =
                     builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
             })
-                  .AddEntityFrameworkStores<AnimalsShelterDbContext>();
+				 .AddRoles<IdentityRole<Guid>>()
+				  .AddEntityFrameworkStores<AnimalsShelterDbContext>();
 			
 			builder.Services.AddHttpContextAccessor();
 			builder.Services.AddDistributedMemoryCache();
@@ -92,12 +95,17 @@ namespace AnimalsShelterSystem.Web
             app.UseAuthorization();
             app.UseSession();
 
-            //app.MapControllerRoute(
-            //    name: "default",
-            //    pattern: "{controller=Home}/{action=Index}/{id?}");
-            //app.MapRazorPages();
+			if (app.Environment.IsDevelopment())
+			{
+				app.SeedAdministrator(DevelopmentAdminEmail);
+			}
 
-            app.UseEndpoints(config =>
+			//app.MapControllerRoute(
+			//    name: "default",
+			//    pattern: "{controller=Home}/{action=Index}/{id?}");
+			//app.MapRazorPages();
+
+			app.UseEndpoints(config =>
             {
                 config.MapControllerRoute(
                     name: "areas",

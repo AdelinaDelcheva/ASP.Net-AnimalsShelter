@@ -369,5 +369,19 @@ namespace AnimalsShelterSystem.Services.Data
 
             return result;
         }
+
+        public async Task<bool> IsAdoptedAsync(string id)
+        {
+            Animal animal = await this.dbContext.Animals.FirstAsync(a => a.Id.ToString() == id);
+            return animal.AnimalAdopterId.HasValue;
+        }
+
+        public async Task AdoptAnimalAsync(string animalId, string user)
+        {
+            Animal animal = await this.dbContext.Animals.FirstAsync(a => a.Id.ToString() == animalId);
+            animal.AnimalAdopterId=Guid.Parse(user);
+
+            await this.dbContext.SaveChangesAsync();
+        }
     }
 }

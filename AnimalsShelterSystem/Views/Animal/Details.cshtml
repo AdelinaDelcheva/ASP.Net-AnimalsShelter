@@ -33,7 +33,7 @@
             <div class="flex" style="display:flex;justify-content:flex-start;align-items:center;align-content:center;gap:24px;">
                 @if (this.User.Identity?.IsAuthenticated ?? false)
                 {
-                    @if (isVolunteer && isVolunteerTheCareTaker)
+                    @if ((isVolunteer && isVolunteerTheCareTaker)|| this.User.IsAdmin())
                     {
                         <a class="btn btn-warning" asp-controller="Animal" asp-action="Edit"
                    asp-route-id="@Model.Id">Edit</a>
@@ -48,7 +48,7 @@
                           asp-action="Adopt" asp-route-id="@Model.Id" method="post">
                                 <input class="btn btn-primary"  type="submit" value="Adopt" />
                             </form>
-                        <a class="d-inline-flex m-auto mb-3 btn btn-primary buy-button" productId="@Model.Id">Add to Cart</a>
+                       
                     }
                     
                 }
@@ -67,7 +67,7 @@
                             @if (this.User.Identity?.IsAuthenticated ?? false)
 
                             {
-                                @if (isVolunteer && isVolunteerTheCareTaker)
+                                    @if ((isVolunteer && isVolunteerTheCareTaker) || this.User.IsAdmin())
                                 {
 
                                         <form class="ml-2" asp-controller="Characteristic" asp-action="RemoveCharacteristic"
@@ -85,7 +85,7 @@
                         @if (this.User.Identity?.IsAuthenticated ?? false)
 
                         {
-                            @if (isVolunteer && isVolunteerTheCareTaker)
+                            @if ((isVolunteer && isVolunteerTheCareTaker)|| this.User.IsAdmin())
                             {
 
                                 <a class="btn btn-warning" asp-controller="Characteristic" asp-action="AddCharacteristic"
@@ -104,7 +104,7 @@
                         @if (this.User.Identity?.IsAuthenticated ?? false)
 
                         {
-                            @if (isVolunteer && isVolunteerTheCareTaker)
+                            @if ((isVolunteer && isVolunteerTheCareTaker) || this.User.IsAdmin())
                             {
                                 <a class="btn btn-warning" asp-controller="Characteristic" asp-action="AddCharacteristic"
                        asp-route-id="@Model.Id">Add</a>

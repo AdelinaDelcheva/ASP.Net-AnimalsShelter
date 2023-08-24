@@ -61,7 +61,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
-            if (!isVolunteer)
+            if (!isVolunteer && !User.IsAdmin())
             {
 
                 this.TempData[ErrorMessage] = "You must be a volunteer in order to add a new animal characteristic!";
@@ -74,7 +74,7 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             bool isVolunteerCaretaker = await this.animalService
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
-            if (!isVolunteerCaretaker)
+            if (!isVolunteerCaretaker && !User.IsAdmin())
             {
                 this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
 
@@ -118,7 +118,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
-            if (!isVolunteer)
+            if (!isVolunteer && !User.IsAdmin())
             {
 
                 this.TempData[ErrorMessage] = "You must be a volunteer in order to edit the animal!";
@@ -132,7 +132,7 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             bool isVolunteerCaretaker = await this.animalService
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
-            if (!isVolunteerCaretaker)
+            if (!isVolunteerCaretaker && !User.IsAdmin())
             {
                 this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
 
@@ -195,7 +195,7 @@ namespace AnimalsShelterSystem.Web.Controllers
             }
 
             bool isVolunteer = await this.volunteerService.VolunteerExistsByUserIdAsync(this.User.GetId()!);
-            if (!isVolunteer)
+            if (!isVolunteer && !User.IsAdmin())
             {
 
                 this.TempData[ErrorMessage] = "You must be a volunteer in order to edit the animal!";
@@ -209,7 +209,7 @@ namespace AnimalsShelterSystem.Web.Controllers
 
             bool isVolunteerCaretaker = await this.animalService
                 .IsVolunteerWithIdCaretakeOfAnimalWithIdAsync(id, volunteerId!);
-            if (!isVolunteerCaretaker)
+            if (!isVolunteerCaretaker && !User.IsAdmin())
             {
                 this.TempData[ErrorMessage] = "You must be the volunteer caretaker of the animal you want to edit!";
 
