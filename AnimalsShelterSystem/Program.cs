@@ -57,14 +57,23 @@ namespace AnimalsShelterSystem.Web
 
             builder.Services.AddSession();
 
-           
+            //builder.Services.AddRecaptchaService();
+
+            builder.Services.AddMemoryCache();
+            builder.Services.AddResponseCaching();
 
 
-			builder.Services.AddAppService(typeof(IAnimalService));
+            builder.Services.AddAppService(typeof(IAnimalService));
             builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
             builder.Services.AddScoped<IHtmlSanitizer, HtmlSanitizer>();
 
-			builder.Services
+            builder.Services.ConfigureApplicationCookie(cfg =>
+            {
+                cfg.LoginPath = "/User/Login";
+                cfg.AccessDeniedPath = "/Home/Error/401";
+            });
+
+            builder.Services
                 .AddControllersWithViews()
                 .AddMvcOptions(opt =>
                 {
@@ -95,7 +104,9 @@ namespace AnimalsShelterSystem.Web
             app.UseAuthorization();
             app.UseSession();
 
-			if (app.Environment.IsDevelopment())
+            
+
+            if (app.Environment.IsDevelopment())
 			{
 				app.SeedAdministrator(DevelopmentAdminEmail);
 			}

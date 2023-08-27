@@ -18,5 +18,8 @@ namespace AnimalsShelterSystem.Services.Data.Interfaces
 		CheckoutFormViewModel GetCheckoutInfo(ShoppingCartViewModel cart);
 		Task PlaceOrderAsync(CheckoutFormViewModel model, string userId);
 		Task<IEnumerable<OrderListViewModel>> AllByIdAsync(string userId);
+
+		Task<IEnumerable<OrderInputViewModel>> AllAsync();
+
 	}
 }

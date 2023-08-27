@@ -8,6 +8,7 @@ namespace AnimalsShelterSystem.Services.Data
     using AnimalsShelterSystem.Services.Data.Interfaces;
     using AnimalsShelterSystem.Web.Data;
     using AnimalsShelterSystem.Web.ViewModels.AnimalBreed;
+    using AnimalsShelterSystem.Data.Models;
 
     public class AnimalBreedService : IAnimalBreedService
     {
@@ -15,6 +16,17 @@ namespace AnimalsShelterSystem.Services.Data
         public AnimalBreedService(AnimalsShelterDbContext dbContext)
         {
             this.dbContext = dbContext;
+        }
+
+        public async Task AddBreedInDbAsync(AnimalBreedInputModel model)
+        {
+            AnimalBreed breed = new AnimalBreed()
+            {
+                Breed = model.Breed
+            };
+
+            await this.dbContext.Breeds.AddAsync(breed);
+            await this.dbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<string>> AllBreedNamesAsync()
@@ -39,6 +51,8 @@ namespace AnimalsShelterSystem.Services.Data
 
             return allBreeds;
         }
+
+       
 
         public async Task<bool> ExistsByIdAsync(int id)
         {

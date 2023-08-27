@@ -1,0 +1,23 @@
+﻿﻿@using AnimalsShelterSystem.Web.Infrastructure.Extensitions
+@model IEnumerable<AnimalBreedFormModel>
+
+@{
+    ViewData["Title"] = "All Breeds";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+<div class="list-group">
+    @foreach (var breed in Model)
+    {
+
+        <p style="border-top-width:1px" class="list-group-item list-group-item-action">@breed.Breed</p>
+           
+        
+
+    }
+
+</div>
+<a asp-area="Admin" asp-controller="Breed" asp-action="Add"
+   class="btn btn-primary btn-lg">Add Breed</a>

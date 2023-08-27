@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static AnimalsShelterSystem.Common.EntityValidationConstants;
 
 namespace AnimalsShelterSystem.Services.Data
 {
@@ -92,7 +93,7 @@ namespace AnimalsShelterSystem.Services.Data
 		{
 
 
-			var order = new Order
+			var order = new AnimalsShelterSystem.Data.Models.Order
 			{
 				CreationDate=DateTime.Now,
 				FirstName=model.FirstName,
@@ -157,5 +158,44 @@ namespace AnimalsShelterSystem.Services.Data
 
 			return orders;
 		}
+
+		public async Task<IEnumerable<OrderInputViewModel>> AllAsync()
+		{
+			var orders = await dbContext
+				.Orders
+				
+				.Select(o => new OrderInputViewModel()
+				{
+					Id=o.Id.ToString(),
+					FirstName = o.FirstName,
+					LastName = o.LastName,
+					StreetAddress = o.StreetAddress,
+					City = o.City,
+					Country = o.Country,
+					ZipCode = o.ZipCode,
+
+					Date = o.CreationDate,
+					PhoneNumber = o.PhoneNumber,
+					Total = o.Orders.Select(op => op.Care.Price * op.Quantity).Sum(),
+					Products = o.Orders
+								.Select(op => new OrderProductListViewModel()
+								{
+									ProductId = op.AnimalId.ToString(),
+									Price = op.Care.Price,
+									ImageId = op.Animal.ImageUrl,
+									AnimalName = op.Animal.Name,
+									CareName = op.Care.CareTypes.ToString(),
+									Quantity = op.Quantity,
+									CareId = op.CareId
+
+								})
+				})
+				.OrderByDescending(o => o.Date)
+				.ToArrayAsync();
+
+			return orders;
+		}
+
+
 	}
 }

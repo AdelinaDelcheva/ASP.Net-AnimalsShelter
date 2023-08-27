@@ -11,6 +11,16 @@
 <div class="list-group">
     @foreach (var ch in Model)
     {
-        <a class="list-group-item list-group-item-action" asp-controller="Characteristic" asp-action="Details" asp-route-id="@ch.Id" asp-route-information="@ch.GetUrlInformation()">@ch.Name</a>
+        <a  class="list-group-item list-group-item-action" asp-area="" asp-controller="Characteristic" asp-action="Details" asp-route-id="@ch.Id" asp-route-information="@ch.GetUrlInformation()">
+            @ch.Name
+             @if (this.User.IsAdmin())
+        {
+            <form asp-controller="Characteristic" asp-area="Admin"
+          asp-action="Delete" asp-route-id="@ch.Id" method="post">
+                                    <input class="btn btn-primary" type="submit" value="Delete" />
+                                    </form>
+        }
+            </a>
+       
     }
 </div>

@@ -10,6 +10,11 @@ C:\Users\1\source\repos\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.
 C:\Users\1\source\repos\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\refint\AnimalsShelterSystem.Web.Infrastructure.dll
 C:\Users\1\source\repos\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.pdb
 C:\Users\1\source\repos\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\ref\AnimalsShelterSystem.Web.Infrastructure.dll
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.AssemblyInfo.cs
+C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\bin\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.deps.json
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\bin\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.dll
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\bin\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.pdb
@@ -25,11 +30,6 @@ C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.I
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\bin\Debug\net6.0\AnimalsShelterSystem.Data.Models.pdb
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\bin\Debug\net6.0\AnimalsShelterSystem.Services.Data.Models.pdb
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\bin\Debug\net6.0\AnimalsShelterSystem.Web.ViewModels.pdb
-C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.csproj.AssemblyReference.cache
-C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.AssemblyInfo.cs
-C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.csproj.CopyComplete
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\AnimalsShelterSystem.Web.Infrastructure.dll
 C:\Users\1\Desktop\AnimalsShelterSystem-CourseProject\AnimalsShelterSystem.Web.Infrastructure\obj\Debug\net6.0\refint\AnimalsShelterSystem.Web.Infrastructure.dll

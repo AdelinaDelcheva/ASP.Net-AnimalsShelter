@@ -1,0 +1,28 @@
+﻿@model CharacteristicFormModel
+@{
+	ViewData["Title"] = "Add Characteristic";
+
+}
+
+
+<div class="container mt-5">
+		<h2 class="mb-3">@ViewData["Title"]</h2>
+
+	<form id="categoryForm" enctype="multipart/form-data" method="post">
+		<div class="mb-3">
+			<label asp-for="Name" class="form-label">Characteristic Name</label>
+			<input asp-for="Name" class="form-control" autocomplete="Name" aria-required="true" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		
+		<div>
+
+			<button type="submit" asp-area="Admin" asp-controller="Characteristic" asp-action="Add" class="btn btn-primary">Add Characteristic</button>
+		</div>
+	</form>
+</div>
+
+<!-- Add the Bootstrap JS script -->
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

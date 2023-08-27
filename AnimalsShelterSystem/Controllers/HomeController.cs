@@ -10,6 +10,7 @@ namespace AnimalsShelterSystem.Web.Controllers
 
     using AnimalsShelterSystem.Web.ViewModels.Home;
     using AnimalsShelterSystem.Services.Data.Interfaces;
+    using static Common.GeneralApplicationConstants;
 
     public class HomeController : Controller
     {
@@ -23,6 +24,11 @@ namespace AnimalsShelterSystem.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
+
+            if (this.User.IsInRole(AdminRoleName))
+            {
+                return this.RedirectToAction("Index", "Home", new { Area = AdminAreaName });
+            }
             IEnumerable<IndexViewModel> lastthree = await this.animalService.LastThreeAnimals();
 
             return View(lastthree);

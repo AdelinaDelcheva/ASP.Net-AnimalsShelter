@@ -16,6 +16,7 @@ namespace AnimalsShelterSystem.Data.Models
 
         [Key]
         public Guid Id { get; set; }
+
         public int CareId { get; set; }
         public virtual Care Care { get; set; } = null!;
 

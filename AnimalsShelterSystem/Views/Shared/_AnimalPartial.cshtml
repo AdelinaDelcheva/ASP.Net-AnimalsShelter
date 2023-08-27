@@ -9,23 +9,23 @@
 
 <div class="col-md-4">
     <div class="card mb-3">
-        <img class="card-img-top" style="height: 400px; width: 100%" src="@Model.ImageUrl" alt="Animal Image">
+        <img class="card-img-top" style="aspect-ratio:1; width: 100%;object-fit:cover" src="@Model.ImageUrl" alt="Animal Image">
         <div class="card-body text-center">
             <h4>@Model.Name</h4>
             <h6>Breed: <b>@Model.Breed</b></h6>
             
             <h6>(@(Model.IsAdopted ? "Adopted" : "Not Adopted"))</h6>
             <br />
-            <a asp-controller="Animal" asp-action="Details" asp-route-id="@Model.Id"
+            <a asp-controller="Animal" asp-action="Details" asp-route-id="@Model.Id" asp-area=""
                class="btn btn-success">Details</a>
 
             @if (this.User.Identity?.IsAuthenticated ?? false)
             {
                 @if ((isVolunteer && isVolunteerTheCareTaker)|| this.User.IsAdmin())
                 {
-                    <a asp-controller="Animal" asp-action="Edit" asp-route-id="@Model.Id"
+                    <a asp-controller="Animal" asp-action="Edit" asp-route-id="@Model.Id" asp-area=""
                class="btn btn-warning">Edit</a>
-                    <a asp-controller="Animal" asp-action="Delete" asp-route-id="@Model.Id"
+                    <a asp-controller="Animal" asp-action="Delete" asp-route-id="@Model.Id"asp-area=""
                class="btn btn-danger">Delete</a>
                 }
                     
@@ -33,15 +33,15 @@
 
                 @if (!Model.IsAdopted)
                 {
-                            <form  asp-controller="Animal"
+                    <form asp-controller="Animal" asp-area=""
                   asp-action="Adopt" asp-route-id="@Model.Id" method="post">
                                 <input class="btn btn-primary" type="submit" value="Adopt" />
                             </form>
                 }
                 else
                 {
-                   
-                   <a asp-controller="Review" asp-action="Add" asp-route-id="@Model.Id"
+
+                    <a asp-controller="Review" asp-action="Add" asp-route-id="@Model.Id" asp-area=""
                class="btn btn-warning">Review</a>
                 }
                 
