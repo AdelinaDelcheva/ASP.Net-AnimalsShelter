@@ -18,19 +18,19 @@ Listing orders, placed by clients
 
 Tools used:
 
-ASP.NET Core 6.0
+* ASP.NET Core 6.0
 
-Entity Framework Core
+* Entity Framework Core
 
-Microsoft SQL Server
+* Microsoft SQL Server
 
-Bootstrap
+* Bootstrap
 
-Font-Awesome
+* Font-Awesome
 
-Toastr
+* Toastr
 
-HtmlSanitizer
+* HtmlSanitizer
 
-AJAX
+* AJAX
 
