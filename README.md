@@ -1,4 +1,5 @@
-# ASP.Net-AnimalsShelter- Adopt or buy care for an animal
+> # ASP.Net-AnimalsShelter
+>> Adopt or buy care for an animal
 
 
 The app is divided in two sections:
