@@ -9,6 +9,8 @@ namespace AnimalsShelterSystem.Web.Infrastructure.Extensitions
 
 	using AnimalsShelterSystem.Data.Models;
 	using static AnimalsShelterSystem.Common.GeneralApplicationConstants;
+	using AnimalsShelterSystem.Web.Infrastructure.Middlewares;
+
 	public static class WebAppBuilderExtensions
 	{
 		public static void AddAppService(this IServiceCollection service,Type typeService)
@@ -67,5 +69,10 @@ namespace AnimalsShelterSystem.Web.Infrastructure.Extensitions
 			return app;
 		}
 
-	}
+        public static IApplicationBuilder EnableOnlineUsersCheck(this IApplicationBuilder app)
+        {
+            return app.UseMiddleware<OnlineUsersMiddleware>();
+        }
+
+    }
 }

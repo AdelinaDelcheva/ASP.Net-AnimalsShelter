@@ -104,7 +104,7 @@ namespace AnimalsShelterSystem.Web
             app.UseAuthorization();
             app.UseSession();
 
-            
+            app.EnableOnlineUsersCheck();
 
             if (app.Environment.IsDevelopment())
 			{
